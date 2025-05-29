@@ -8,6 +8,7 @@ from puid_gen import gen_puid
 def main(
     home: str,
     editor: str,
+    terminal: str,
     db_name: str,
     db_file_ext: str,
     tmp_path: str,
@@ -40,7 +41,7 @@ def main(
 
 \end{{document}}"""
     date_now = datetime.now()
-    date_format = date_now.strftime("%Y-%m")
+    date_format = date_now.strftime("%Y-%m-%d")
     db_file_template = rf"""desc: 
 puid: {puid}
 source: []
@@ -62,7 +63,7 @@ hardness:
         f.write(bon_add_template)
     Popen(
         [
-            "alacritty",
+            terminal,
             "-e",
             "zsh",
             "-c",

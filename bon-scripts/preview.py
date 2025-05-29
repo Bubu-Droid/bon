@@ -28,6 +28,7 @@ def make_tex_code(db_text: str, puid: str, separator: str) -> str:
 
 def main(
     home: str,
+    terminal: str,
     tmp_path: str,
     tmp_file_name: str,
     puid: str,
@@ -45,7 +46,7 @@ def main(
         f.write(make_tex_code(db_text, puid, separator))
     subprocess.Popen(
         [
-            "alacritty",
+            terminal,
             "-e",
             "zsh",
             "-c",
