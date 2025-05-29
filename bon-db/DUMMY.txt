@@ -1,0 +1,21 @@
+desc: find the value of 1 + 1
+puid: DUMMY
+source: [unknown, ohio]
+tags: [ohioproblem, weird]
+date: 2025-05-29
+hardness: easy
+---
+\begin{problem}
+  [\href{https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra}{Ohio TST 2069/1}]
+  Find the value of $1 + 1$.
+\end{problem}
+---
+\begin{proof}[Solution 1.]
+  \renewcommand{\qedsymbol}{$\blacksquare$}
+  Using basic arithmetic, we find that thee answer is $2$.
+\end{proof}
+---
+\begin{proof}[Solution 2.]
+  \renewcommand{\qedsymbol}{$\blacksquare$}
+  Using ohio algebra, the answer turns out to be $2$.
+\end{proof}
