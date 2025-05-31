@@ -79,7 +79,8 @@ More exposition about how the script works has been provided in
 
 > **_NOTE:_** After the introduction of
 > [watcher.py](bon-scripts/watcher.py)
-> (introduced in commit: `<commit-num>`), the script now automates
+> (introduced in commit [`7c72c30`][7c72c30]),
+> the script now automates
 > the interaction between `bon-db/` and the TeX file that
 > you are editing. Any change in made in the file
 > is automatically written into the database. (Just make sure the
@@ -327,3 +328,4 @@ a cute coincidence. :laughing:
 [bubusty]: https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bubu.sty
 [bontex]: https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bon.tex
 [nvimtelescope]: https://github.com/nvim-telescope/telescope.nvim
+[7c72c30]: https://github.com/Bubu-Droid/bon/commit/7c72c30af36b77ba13efb63b2d32e6d3d21e7c62
