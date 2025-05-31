@@ -10,12 +10,10 @@ hardness: easy
   Find the value of $1 + 1$.
 \end{problem}
 ---
-\begin{proof}[Solution 1.]
-  \renewcommand{\qedsymbol}{$\blacksquare$}
-  Using basic arithmetic, we find that thee answer is $2$.
-\end{proof}
+\begin{soln}
+  Using basic arithmetic, we find that the answer is $2$.
+\end{soln}
 ---
-\begin{proof}[Solution 2.]
-  \renewcommand{\qedsymbol}{$\blacksquare$}
+\begin{soln}
   Using ohio algebra, the answer turns out to be $2$.
-\end{proof}
+\end{soln}
