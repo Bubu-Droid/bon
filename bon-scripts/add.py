@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 from subprocess import Popen, run
 
+import watcher
 from puid_gen import gen_puid
 
 
@@ -70,4 +71,7 @@ hardness:
             f"cd {tmp_path} && latexmk -pdf -pvc {tmp_file_name}",
         ]
     )
+    observer = watcher.start_watcher(tmp_file_path, db_file_path)
     run([editor, tmp_file_path], check=False)
+    observer.stop()
+    observer.join()

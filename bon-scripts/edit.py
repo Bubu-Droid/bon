@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+import watcher
+
 
 def make_tex_code(db_text: str, puid: str, separator: str) -> str:
     db_sec = db_text.split(separator)
@@ -21,6 +23,7 @@ def make_tex_code(db_text: str, puid: str, separator: str) -> str:
 \section*{{{puid}}}
 
 {bon_inner_txt}
+
 \end{{document}}"""
 
     return bon_edit_template
@@ -54,4 +57,7 @@ def main(
             f"cd {tmp_path} && latexmk -pdf -pvc {tmp_file_name}",
         ]
     )
+    observer = watcher.start_watcher(tmp_file_path, db_file_path)
     subprocess.run([editor, tmp_file_path], check=False)
+    observer.stop()
+    observer.join()
