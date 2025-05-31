@@ -8,7 +8,7 @@
 # https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
 
 # Bubu's script can be found at
-# https://github.com/Bubu-Droid/dotfiles/blob/main/bon/aops.py
+# https://github.com/Bubu-Droid/bon/blob/main/bon-scripts/aops.py
 
 import re
 
@@ -185,7 +185,7 @@ def toAOPS(text: str) -> str:
     text = re.sub(r"\\textit{([^}]*)}", r"[i]\1[/i]", text)
     text = re.sub(r"\\textbf{([^}]*)}", r"[b]\1[/b]", text)
     text = re.sub(
-        r"\\paragraph{([^}]*)}", DIVIDER + r"[color=blue][b]\1[/b][/color]", text
+        r"\\paragraph{([^}]*)}", DIVIDER + r"[color=blue][b]\1[/b][/solor]", text
     )
     text = re.sub(r"\\subparagraph{([^}]*)}", DIVIDER + r"[b]\1[/b]", text)
     text = re.sub(r"\\url{([^}]*)}", r"[url]\1[/url]", text)
@@ -200,6 +200,7 @@ def toAOPS(text: str) -> str:
     # return "\n".join(paragraphs)
 
 
-cliptext = pyperclip.paste()
-cliptext = remove_soft_newlines(toAOPS(cliptext))
-pyperclip.copy(toAOPS(cliptext))
+if __name__ == "__main__":
+    cliptext = pyperclip.paste()
+    cliptext = remove_soft_newlines(toAOPS(cliptext))
+    pyperclip.copy(toAOPS(cliptext))
