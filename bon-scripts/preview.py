@@ -4,7 +4,7 @@ import subprocess
 
 def make_tex_code(db_text: str, puid: str, separator: str) -> str:
     db_sec = db_text.split(separator)
-    bon_inner_txt = db_sec[1] + "\n" + "\n\\hrulebar\n".join(db_sec[2:])
+    bon_inner_txt = db_sec[1] + "\n" + "\n".join(db_sec[2:])
 
     bon_preview_template = rf"""\documentclass[12pt]{{scrartcl}}
 
@@ -21,6 +21,7 @@ def make_tex_code(db_text: str, puid: str, separator: str) -> str:
 \section*{{{puid}}}
 
 {bon_inner_txt}
+
 \end{{document}}"""
 
     return bon_preview_template
