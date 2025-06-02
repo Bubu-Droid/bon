@@ -83,8 +83,11 @@ More exposition about how the script works has been provided in
 > the script now automates
 > the interaction between `bon-db/` and the TeX file that
 > you are editing. Any change in made in the file
-> is automatically written into the database. (Just make sure the
-> environments are closed correctly before saving the TeX file.)
+> is automatically written into the database. (Just make sure that
+> you are using the `TEX_SEP` variable (default: `\n%---%\n`)
+> to separate problem statement and individual
+> solutions. Check the dummy TeX template given in
+> [this](working-of-bonpy-script) section.)
 
 ## DB file structure and a few more tools
 
@@ -152,8 +155,43 @@ hardness: easy
 \end{soln}
 ---
 \begin{soln}
-  Using ohio algebra, the answer turns out to be $2$.
+  Using Ohio algebra, the answer turns out to be $2$.
 \end{soln}
+```
+
+The corresponding LaTeX template for `DUMMY.txt` is
+
+```text
+\documentclass[12pt]{article}
+
+\usepackage[min]{bubu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{BON PREVIEW}
+\author{Avigyan Chakraborty}
+\date{\today}
+
+\begin{document}
+
+\section*{DUMMY}
+
+%---%
+\begin{problem}
+  [\href{https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra}{Ohio TST 2069/1}]
+  Find the value of $1 + 1$.
+\end{problem}
+%---%
+\begin{soln}
+  Using basic arithmetic, we find that the answer is $2$.
+\end{soln}
+%---%
+\begin{soln}
+  Using Ohio algebra, the answer turns out to be $2$.
+\end{soln}
+%---%
+
+\end{document}
 ```
 
 ## Working of [bon.py](bon-scripts/bon.py) script
@@ -220,65 +258,10 @@ file.
 > package,
 > i.e., `\usepackage[bon]{bubu}`.
 
-After adding the lines above, the following lines need to be
-added into your TeX document right after `\begin{document}`.
-
-```python
-\begin{pycode}
-import os
-import sys
-LOCAL_HOME = os.environ.get("HOME", "/home/bubu")
-DB_SCRIPTS_PATH = os.path.join(LOCAL_HOME, "bon/bon-scripts/")
-sys.path.insert(0, DB_SCRIPTS_PATH)
-import bon
-def print_bubuproblem(puid: str) -> None:
-    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        return (db_sec[1])
-    except Exception as e:
-        return (f"[Error: {e}]")
-def print_bubuproblem_nonum(puid: str) -> None:
-    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        db_sec[1] = db_sec[1].replace("\\begin{problem}", "\\begin{problem*}")
-        db_sec[1] = db_sec[1].replace("\\end{problem}", "\\end{problem*}")
-        return (db_sec[1])
-    except Exception as e:
-        return (f"[Error: {e}]")
-def print_bubusoln(puid: str) -> None:
-    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        bon_inner_list = db_sec[2:]
-        bon_fin_list = []
-        res = ""
-        if len(bon_inner_list) == 1:
-            res = bon_inner_list[0]
-        elif len(bon_inner_list) >= 2:
-            for i, sec in enumerate(bon_inner_list):
-                sec = sec.replace(
-                    "\\begin{soln}",
-                    f"\\begin{{proof}}[Solution {i+1}.]\\renewcommand{{\\qedsymbol}}{{$\\blacksquare$}}",
-                )
-                sec = sec.replace("\\end{soln}", "\\end{proof}")
-                bon_fin_list.append(sec)
-            res = "\n".join(bon_fin_list)
-        return res
-    except Exception as e:
-        return (f"[Error: {e}]")
-\end{pycode}
-```
-
-> If you use [bon.tex][bontex], then you can just add
-> `\input{bon}` after `\begin{document}`.
+After adding the lines above, download [bon.tex][bontex]
+and move the file to your working directory.
+Then add the line
+`\input{bon}` right after `\begin{document}`.
 
 This should be it.
 
