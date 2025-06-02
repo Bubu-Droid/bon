@@ -82,7 +82,7 @@ More exposition about how the script works has been provided in
 > (introduced in commit [`7c72c30`][7c72c30]),
 > the script now automates
 > the interaction between `bon-db/` and the TeX file that
-> you are editing. Any change in made in the file
+> you are editing. Any change made in the file
 > is automatically written into the database. (Just make sure that
 > you are using the `TEX_SEP` variable (default: `\n%---%\n`)
 > to separate problem statement and individual
@@ -287,14 +287,19 @@ that are produced during compilation,
 use `system("touch <dir-name>/\$(basename \"$_[0]\").pytxmcr");`
 instead where `<dir-name>` is the name of the auxiliary directory.
 
-Thus the commands for adding data from the database should be like:
+The commands for adding problem/solution(s)
+from the database should be like:
 
-- `\bubuprob{<PUID>}` - When you want to add the problem statement
+- `\bonincludle{problem}{<PUID>}` - When you want to add the problem statement
   with the problem number.
-- `\bubuprobnonum{<PUID>}` - When you want to add the problem statement
-  without the problem number.
-- `\bubusoln{<PUID>}` - When you want to add the solution(s)
+- `\boninclude{soln}{<PUID>}` - When you want to add the solution(s)
   for the corresponding problem.
+
+Here you can use `problem`, `problem*`, `exercise`, `exercise*`,
+`example`, `exmaple*`, `soln`, `solution`
+as the first argument in
+`\boninclude{}{}`. Furthermore, `soln` and `solution` are
+interchangeable.
 
 ---
 
