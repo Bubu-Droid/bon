@@ -15,5 +15,5 @@ hardness: easy
 \end{soln}
 ---
 \begin{soln}
-  Using ohio algebra, the answer turns out to be $2$.
+  Using Ohio algebra, the answer turns out to be $2$.
 \end{soln}
