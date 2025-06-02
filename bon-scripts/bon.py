@@ -19,6 +19,7 @@ TMP_PATH = "/tmp/preview/"
 TMP_FILE_NAME = "bon-preview.tex"
 PUID_LEN = 6
 SEPARATOR = "\n---\n"
+TEX_SEP = "\n%---%\n"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="BON DB Manager")
@@ -67,9 +68,17 @@ if __name__ == "__main__":
             puid,
             DB_FILE_EXT,
             SEPARATOR,
+            TEX_SEP,
         )
     if args.preview:
         puid = args.preview
         preview.main(
-            HOME, TERMINAL, TMP_PATH, TMP_FILE_NAME, puid, DB_FILE_EXT, SEPARATOR
+            HOME,
+            TERMINAL,
+            TMP_PATH,
+            TMP_FILE_NAME,
+            puid,
+            DB_FILE_EXT,
+            SEPARATOR,
+            TEX_SEP,
         )

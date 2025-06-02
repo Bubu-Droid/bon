@@ -2,9 +2,9 @@ import os
 import subprocess
 
 
-def make_tex_code(db_text: str, puid: str, separator: str) -> str:
+def make_tex_code(db_text: str, puid: str, separator: str, tex_sep: str) -> str:
     db_sec = db_text.split(separator)
-    bon_inner_txt = db_sec[1] + "\n" + "\n".join(db_sec[2:])
+    bon_inner_txt = tex_sep + tex_sep.join(db_sec[1:]) + tex_sep
 
     bon_preview_template = rf"""\documentclass[12pt]{{scrartcl}}
 
@@ -19,9 +19,7 @@ def make_tex_code(db_text: str, puid: str, separator: str) -> str:
 \begin{{document}}
 
 \section*{{{puid}}}
-
 {bon_inner_txt}
-
 \end{{document}}"""
 
     return bon_preview_template
@@ -35,6 +33,7 @@ def main(
     puid: str,
     db_file_ext: str,
     separator: str,
+    tex_sep: str,
 ) -> None:
     db_file_path = os.path.join(home, "bon/bon-db/", f"{puid}{db_file_ext}")
     tmp_file_path = os.path.join(tmp_path, tmp_file_name)
@@ -44,7 +43,7 @@ def main(
     with open(db_file_path, "r", encoding="utf-8") as f:
         db_text = f.read()
     with open(tmp_file_path, "w", encoding="utf-8") as f:
-        f.write(make_tex_code(db_text, puid, separator))
+        f.write(make_tex_code(db_text, puid, separator, tex_sep))
     subprocess.Popen(
         [
             terminal,
