@@ -1,0 +1,35 @@
+desc: f(a)=f(b) and f'(a)=f'(b) prove f''(c)-lambda f'(c)^2=0
+puid: Z406B7
+source: []
+tags: [differentiability, differentiation, lmvt, mvtconstruct]
+date: 2025-07-22
+hardness: medium
+---
+\begin{problem}
+  Let $f\colon [a,b] \to \RR$ be a continuous function which
+  is differentiable on $(a,b)$. Given that
+  $f(a)=f(b)$ and $f'(a)=f'(b)$, prove that
+  for all $\lambda \in \RR$,
+  \[
+    f''(x) - \lambda f'(x)^2 = 0
+  \]
+  has at least one real root.
+\end{problem}
+---
+\begin{soln}
+  Define $g(x)=\frac{f'(x)}{e^{\lambda f(x)}}$.
+  Clearly $g(x)$ is continuous on
+  $[a,b]$ and differentiable on $(a,b)$. Then note that
+  \[
+    g(a)=\frac{f'(a)}{e^{\lambda f(a)}}
+    =\frac{f'(b)}{e^{\lambda f(b)}}
+    = g(b)
+  .\]
+  Thus by LMVT, there exists $c \in (a,b)$ such that
+  \[
+    g'(c)=\frac{g(b)-g(a)}{b-a}=0
+  .\]
+
+  Calculating $g'(x)$ and verifying gives that
+  $f''(c)-\lambda f'(c)^2=0$.
+\end{soln}
