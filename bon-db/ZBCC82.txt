@@ -28,7 +28,7 @@ hardness: medium
     f'(x+2) = f(x+2) - f(x+1).
   \]
   Now adding these two equations and then
-  dividing by 2, we get
+  dividing by $2$, we get
   \[
     \frac{f'(x + 1) + f'(x + 2)}{2}
     = \frac{f(x + 2) - f(x)}{2}.
