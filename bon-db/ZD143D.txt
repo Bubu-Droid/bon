@@ -1,9 +1,9 @@
-desc: 
+desc: f(1/n)=1 prove f'(0)=f''(0)=0
 puid: ZD143D
 source: []
-tags: []
+tags: [differentiability, differentiation, lmvt]
 date: 2025-07-22
-hardness: 
+hardness: easy
 ---
 \begin{problem}
   Let $f\colon \RR\to \RR$ be a twice differentiable function
