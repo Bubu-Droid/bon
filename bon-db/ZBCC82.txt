@@ -1,0 +1,59 @@
+desc: f'(x+n)=(f(x+n)-f(x))/n find f(x)
+puid: ZBCC82
+source: [Putnam 2010 A2]
+tags: [differentiability, differentiation, putnam]
+date: 2025-07-23
+hardness: medium
+---
+\begin{problem}
+  [\href{https://aops.com/community/c7h381033p2109503}{Putnam 2010 A2}]
+  Let $f\colon \mathbb{R} \to \mathbb{R}$ be a differentiable
+  function which satisfies
+  \[
+    f'(x+n) = \frac{f(x+n) - f(x)}{n}
+    \quad \forall\, n \in \mathbb{N}.
+  \]
+  Find all such possible functions $f(x)$.
+\end{problem}
+---
+\begin{soln}
+  Clearly $f(x)$ is infinitely differentiable.
+  Putting $n = 1$ in our primary equation,
+  we get
+  \[
+    f'(x+1) = f(x+1) - f(x).
+  \]
+  Substituting $x \mapsto x + 1$, we get
+  \[
+    f'(x+2) = f(x+2) - f(x+1).
+  \]
+  Now adding these two equations and then
+  dividing by 2, we get
+  \[
+    \frac{f'(x + 1) + f'(x + 2)}{2}
+    = \frac{f(x + 2) - f(x)}{2}.
+  \]
+  Now putting $n = 2$ in our primary equation, we get
+  \[
+    f'(x + 2) = \frac{f(x + 2) - f(x)}{2}.
+  \]
+  Substituting this into our previous finding, we get
+  \[
+  \frac{f'(x + 1) + f'(x + 2)}{2} = f'(x + 2)
+  \implies f'(x + 1) = f'(x + 2).
+  \]
+  Then note that $f'(x) = f'(x + 1) = \cdots = f'(x + n)$.
+
+  Now differentiating the primary equation, we get
+  \[
+    f''(x + n)
+    = \frac{f'(x+n) - f'(x)}{n} = 0.
+  \]
+  Substituting $x \mapsto x - n$ implies $f''(x) = 0$.
+  Since $f(x)$ is infinitely differentiable, $f''(x)$ is
+  continuous. By integrating $f''(x) = 0$, we get
+  $f(x) = ax + b$.
+
+  Clearly a linear function satisfies our original
+  equation and we are done.
+\end{soln}

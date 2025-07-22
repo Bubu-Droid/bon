@@ -6,7 +6,7 @@ date: 2025-07-22
 hardness: easy
 ---
 \begin{problem}
-  Let $f\colon [-1, 1] \to \mathbb{R}$ be a function which is
+  Let $f\colon [0, 1] \to \mathbb{R}$ be a function which is
   $n+1$ times differentiable and satisfies
   \[
     f(1) = f(0) = f'(0) = \cdots = f^{(n)}(0) = 0.
