@@ -1,7 +1,7 @@
 desc: f(a)=f(b) and f'(a)=f'(b) prove f''(c)-lambda f'(c)^2=0
 puid: Z406B7
 source: []
-tags: [differentiability, differentiation, lmvt, mvtconstruct]
+tags: [differentiability, differentiation, mvt, mvtconstruct]
 date: 2025-07-22
 hardness: medium
 ---

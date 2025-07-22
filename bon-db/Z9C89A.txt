@@ -1,0 +1,41 @@
+desc: f(a)=a and f(b)=b prove f'(u)+f'(v)=2
+puid: Z9C89A
+source: []
+tags: [differentiability, differentiation, mvt]
+date: 2025-07-23
+hardness: medium
+---
+\begin{problem}
+  Let $f\colon [a, b] \to [a, b]$ be a differentiable
+  function such that $f(a) = a$ and $f(b) = b$.
+  Prove that there exist $u$, $v \in (a, b)$ such that
+  $u < v$ and $f'(u) + f'(v) = 2$.
+\end{problem}
+---
+\begin{soln}
+  By LMVT on $\left(a, \frac{a+b}{2}\right)$, we get that there exists
+  $u \in (a, \frac{a+b}{2})$ such that
+  \[
+    f'(u)
+    = \frac{
+      f\left(\frac{a+b}{2}\right) - f(a)
+    }{\frac{a+b}{2} - a}
+    = \frac{2}{b - a}
+    \cdot \left(f\left(\frac{a+b}{2}\right) - f(a)\right).
+  \]
+  Similarly by LMVT on $\left(\frac{a+b}{2}, b\right)$,
+  we get that there exists
+  $v \in (\frac{a+b}{2}, b)$ such that
+  \[
+    f'(v) = \frac{
+      f(b) - f\left(\frac{a+b}{2}\right)
+    }{b - \frac{a+b}{2}}
+    = \frac{2}{b - a}
+    \cdot \left(f(b) - f\left(\frac{a+b}{2}\right)\right).
+  \]
+  Clearly $u < v$ and
+  \[
+    f'(u) + f'(v) = \frac{2}{b - a} \cdot (f(b) - f(a))
+    = \frac{2}{b - a} \cdot (b - a) = 2.\qedhere
+  \]
+\end{soln}

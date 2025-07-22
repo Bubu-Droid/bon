@@ -1,12 +1,12 @@
-desc: 
+desc: f(1)=f(0)=f'(0)=...=f^{(n)}(0)=0 prove f^{(n+1)}(eps)=0
 puid: ZF51A6
 source: []
-tags: []
+tags: [differentiability, differentiation, mvt]
 date: 2025-07-22
-hardness: 
+hardness: easy
 ---
 \begin{problem}
-  Let $f: [-1, 1] \to \mathbb{R}$ be a function which is
+  Let $f\colon [-1, 1] \to \mathbb{R}$ be a function which is
   $n+1$ times differentiable and satisfies
   \[
     f(1) = f(0) = f'(0) = \cdots = f^{(n)}(0) = 0.

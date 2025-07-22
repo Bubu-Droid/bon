@@ -1,7 +1,7 @@
 desc: f(1/n)=1 prove f'(0)=f''(0)=0
 puid: ZD143D
 source: []
-tags: [differentiability, differentiation, lmvt]
+tags: [differentiability, differentiation, mvt]
 date: 2025-07-22
 hardness: easy
 ---
