@@ -1,0 +1,59 @@
+desc: |f'(x)|<=|f(x)| prove f(x)=0
+puid: ZAFC5E
+source: []
+tags: [differentiability,differentiation,supremum,infimum,mvt]
+date: 2025-07-25
+hardness: hard
+---
+\begin{problem}
+  Let $f\colon [0, 1] \to \mathbb{R}$ be a continuous
+  function such that $f(0) = 0$ and
+  $|f'(x)| \leq |f(x)|$ for all $x \in [0,1]$.
+  Prove that $f(x)=0$ for all $x\in [0,1]$.
+\end{problem}
+---
+\begin{soln}
+  Since $|f(x)|$ is continuous over $[0,1]$, it must be
+  bounded. Let $M = \max_{x \in [0,1]} |f(x)|$.
+  Also let
+  $S = \{ x \in [0,1] \mid |f(x)| = M \}$.
+  Since $x \in [0,1]$, $S$ must be bounded.
+  Let $c = \inf \{S\}$.
+  By continuity, $|f(c)| = M$.
+  \begin{claim}
+    $c=0$.
+  \end{claim}
+  \begin{proof}
+    For the sake of contradiction, assume that
+    $c > 0$. Then by the MVT on $(0,c)$,
+    we get $t \in (0,c)$ such that
+    \[
+      f'(t) = \frac{f(c) - f(0)}{c - 0}
+      = \frac{f(c)}{c}.
+    \]
+    So,
+    \[
+      |f(c)| = |c| \cdot |f'(t)|.
+    \]
+    Clearly $0 < c \leq 1$, so
+    \[
+      |f(c)| = c \cdot |f'(t)| \leq |f'(t)| \leq |f(t)|.
+    \]
+    But then
+    \[
+      M = |f(c)| \leq |f(t)| \leq M \implies |f(t)| = M.
+    \]
+    Since $t < c$, this contradicts the
+    minimality of $c$ and our claim is proved.
+  \end{proof}
+  Therefore
+  \[
+    M = |f(c)| = |f(0)| = 0
+  \]
+  which implies
+  \[
+    |f(x)| \leq M
+    = 0 \implies f(x)
+    = 0 \quad \forall\, x \in [0,1].
+  \]
+\end{soln}

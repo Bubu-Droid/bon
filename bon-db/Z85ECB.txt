@@ -1,7 +1,7 @@
 desc: f(2x-f(x))=x and f(x) injective prove f(x)=x
 puid: Z85ECB
 source: []
-tags: [continuity,funciterseq,sequence,series]
+tags: [continuity, funciterseq, sequence, series]
 date: 2025-07-25
 hardness: medium
 ---
