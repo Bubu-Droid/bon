@@ -1,7 +1,7 @@
 desc: |f'(x)|<=|f(x)| prove f(x)=0
 puid: ZAFC5E
 source: []
-tags: [differentiability,differentiation,supremum,infimum,mvt]
+tags: [differentiability, differentiation, supremum, infimum, mvt]
 date: 2025-07-25
 hardness: hard
 ---
