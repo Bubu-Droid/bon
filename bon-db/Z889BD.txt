@@ -1,0 +1,30 @@
+desc: f+6f'+12f''+8f''' has at least two distinct real roots
+puid: Z889BD
+source: [Putnam 2015 B1]
+tags: [differentiability, differentiation, mvt, mvtconstruct]
+date: 2025-07-31
+hardness: 
+---
+\begin{problem}
+  [\href{https://aops.com/community/c7h1171033p5624360}{Putnam 2015 B1}]
+  Let $f$ be a three times differentiable function
+  (defined on $\mathbb{R}$ and real-valued) such that
+  $f$ has at least five distinct real zeros.
+  Prove that $f+6f'+12f''+8f'''$ has at least
+  two distinct real zeros.
+\end{problem}
+---
+\begin{soln}
+  \aopssoln{ZETA\_in\_olympiad}{30}{https://aops.com/community/c7h1171033p24708669}
+
+  Let $g(x)=e^{x/2}f(x).$ Then $g$ has at least
+  $5$ distinct zeroes, and by Rolle's Theorem,
+  $g'$, $g''$, $g'''$ have at
+  least $4$, $3$, $2$ distinct real zeroes,
+  respectively. Since,
+  \[
+    g'''(x)
+    =\frac{1}{8} e^{x/2} (f(x)+6f'(x)+12f"(x)+8f'''(x))
+  \]
+  and $e^{x/2}$ is never zero, so we're done.
+\end{soln}

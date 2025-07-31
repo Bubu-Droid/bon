@@ -1,0 +1,41 @@
+desc: multiplication and division matrix operation log determinant invariant
+puid: Z624F5
+source: [IMC 2023 D2 P1]
+tags: [matrix, determinant, combinatorics, invariant]
+date: 2025-07-31
+hardness: medium
+---
+\begin{problem}
+  [\href{https://aops.com/community/c7h3125873p28305187}{IMC 2023 D2 P1}]
+  Ivan writes the matrix
+  $\begin{pmatrix} 2 & 3\\ 2 & 4\end{pmatrix}$
+    on the board. Then he performs the following operation
+    on the matrix several times:
+  \begin{enumerate}[1.]
+    \ii he chooses a row or column of the matrix, and
+    \ii he multiplies or divides the chosen row or
+      column entry-wise by the other row or column,
+      respectively.
+  \end{enumerate}
+  Can Ivan end up with the matrix
+  $\begin{pmatrix} 2 & 4\\ 2 & 3\end{pmatrix}$
+  after finitely many steps?
+\end{problem}
+---
+\begin{soln}
+  \aopssoln{Gryphos}{2}{https://aops.com/community/c7h3125873p28305377}
+
+  Consider the entrywise logarithms of the matrix.
+  In each step, we either add one row/column to the
+  other or subtract one row/column from the other.
+  These operations do not change the determinant
+  of this log-matrix. Since
+  \[
+    \det \begin{pmatrix} \log 2 &
+      \log 3\\ \log 2 & \log 4\end{pmatrix}
+      \not= \det \begin{pmatrix} \log 2
+      & \log 4\\ \log 2 & \log 3\end{pmatrix}
+    ,\]
+  it is not possible to obtain the matrix
+  $\begin{pmatrix} 2 & 4\\ 2 & 3\end{pmatrix}$.
+\end{soln}
