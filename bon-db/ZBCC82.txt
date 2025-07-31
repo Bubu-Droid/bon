@@ -42,7 +42,7 @@ hardness: medium
   \frac{f'(x + 1) + f'(x + 2)}{2} = f'(x + 2)
   \implies f'(x + 1) = f'(x + 2).
   \]
-  Then note that $f'(x) = f'(x + 1) = \cdots = f'(x + n)$.
+  Then note that $f'(x) = f'(x + 1) = \dots = f'(x + n)$.
 
   Now differentiating the primary equation, we get
   \[

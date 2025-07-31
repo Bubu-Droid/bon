@@ -1,9 +1,9 @@
-desc: 
+desc: P(x^5)+xQ(x^5)+x^2R(x^5)=(x^4+x^3+...+1)S(x) prove x-1|S(x)
 puid: ZFF44E
 source: []
-tags: []
+tags: [algebra, polynomial, complexno]
 date: 2025-07-31
-hardness: 
+hardness: easy
 ---
 \begin{problem}
   Let $P(x)$, $Q(x)$, $R(x)$, $S(x)$ be polynomials

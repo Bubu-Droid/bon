@@ -44,7 +44,7 @@ hardness: medium
   .\]
   Note that
   \[
-    x_{n+2}-x_{n+1}=x_{n+1}-x_{n}=\cdots=x_2-x_1
+    x_{n+2}-x_{n+1}=x_{n+1}-x_{n}=\dots=x_2-x_1
   \]
   which implies $\left\{ x_{n} \right\}_{n\ge 1}$ is an
   A.P. If $d=x_2-x_1\neq 0$, then $x_{n}=x_1+(n-1)d$ diverges

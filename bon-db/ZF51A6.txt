@@ -9,7 +9,7 @@ hardness: easy
   Let $f\colon [0, 1] \to \mathbb{R}$ be a function which is
   $n+1$ times differentiable and satisfies
   \[
-    f(1) = f(0) = f'(0) = \cdots = f^{(n)}(0) = 0.
+    f(1) = f(0) = f'(0) = \dots = f^{(n)}(0) = 0.
   \]
   Prove that there exists an $\eps \in (0, 1)$ such that
   $f^{(n+1)}(\eps) = 0$.
