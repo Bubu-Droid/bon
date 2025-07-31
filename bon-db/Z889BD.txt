@@ -3,7 +3,7 @@ puid: Z889BD
 source: [Putnam 2015 B1]
 tags: [differentiability, differentiation, mvt, mvtconstruct]
 date: 2025-07-31
-hardness: 
+hardness: easy
 ---
 \begin{problem}
   [\href{https://aops.com/community/c7h1171033p5624360}{Putnam 2015 B1}]
