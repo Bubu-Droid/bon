@@ -35,11 +35,11 @@ def main(
 
 %---%
 \begin{{problem}}
-  
+
 \end{{problem}}
 %---%
 \begin{{soln}}
-  
+
 \end{{soln}}
 %---%
 
