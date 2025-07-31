@@ -1,7 +1,7 @@
 desc: multiplication and division matrix operation log determinant invariant
 puid: Z624F5
 source: [IMC 2023 D2 P1]
-tags: [matrix, determinant, combinatorics, invariant]
+tags: [matrix, determinant, combi, invariant]
 date: 2025-07-31
 hardness: medium
 ---
