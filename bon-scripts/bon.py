@@ -13,7 +13,7 @@ import preview
 HOME = os.environ.get("HOME", "/bubu/home")
 EDITOR = os.environ.get("EDITOR", "nvim")
 TERMINAL = os.environ.get("TERM", "alacritty")
-DB_NAME = "puids.txt"
+DB_NAME = "../bon-db/puids.txt"
 DB_FILE_EXT = ".txt"
 TMP_PATH = "/tmp/preview/"
 TMP_FILE_NAME = "bon-preview.tex"

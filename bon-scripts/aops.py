@@ -5,7 +5,7 @@
 # and returns the converted code into the clipboard.
 
 # Evan's script can be found at
-# https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
+# https://github.com/vEnhance/von/blob/main/von/strparse.py
 
 # Bubu's script can be found at
 # https://github.com/Bubu-Droid/bon/blob/main/bon-scripts/aops.py
@@ -134,7 +134,11 @@ def demacro_1(text: str) -> str:
 
 
 def remove_soft_newlines(text: str) -> str:
-    return re.sub(r"[a-zA-Z]\n[a-zA-Z]", lambda m: m.group(0).replace("\n", " "), text)
+    return re.sub(
+        r"[a-zA-Z.,;—\"–'):]\n[a-zA-Z$]",
+        lambda m: m.group(0).replace("\n", " "),
+        text,
+    )
 
 
 def toAOPS(text: str) -> str:
