@@ -14,7 +14,7 @@ import re
 
 import pyperclip
 
-op_macros = {
+oper_macros = {
     "\\floor": (" \\left\\lfloor ", " \\right\\rfloor "),
     "\\ceil": (" \\left\\lceil ", " \\right\\rceil "),
     "\\abs": (" \\left\\lvert ", " \\right\\lvert "),
@@ -23,27 +23,27 @@ op_macros = {
     "\\sbr": (" \\left[ ", " \\right] "),
 }
 derv_macros = {
-    "\\dd": "\\mathrm{d} ",
-    "\\pd": "\\partial ",
+    "\\dd": "\\mathrm{d}",
+    "\\pd": "\\partial",
 }
 
 
 def bracket_cpos(text: str, brac: tuple, pos: int) -> int:
-    close_counter = 1
-    open_counter = 0
+    close_counter = 0
+    open_counter = 1
     charpos = pos + 1
     for i in text[pos + 1 :]:
         if i == brac[0]:
-            close_counter += 1
-        elif i == brac[1]:
             open_counter += 1
+        elif i == brac[1]:
+            close_counter += 1
         if close_counter == open_counter:
             break
         charpos += 1
     return charpos
 
 
-def demacro_3(text: str) -> str:
+def derv_demacro(text: str) -> str:
     for key, value in derv_macros.items():
         while text.find(key) != -1:
             pos = text.find(key)
@@ -58,11 +58,10 @@ def demacro_3(text: str) -> str:
                     + text[second_cur_cpos + 1 :]
                 )
             elif text[pos + len(key)] == "[":
-                sq_opos = pos + len(key)
                 sq_cpos = bracket_cpos(text, ("[", "]"), pos + len(key))
                 first_cur_cpos = bracket_cpos(text, ("{", "}"), sq_cpos + 1)
                 second_cur_cpos = bracket_cpos(text, ("{", "}"), first_cur_cpos + 1)
-                func_deg = text[sq_opos + 1 : sq_cpos]
+                func_deg = text[pos + len(key) + 1 : sq_cpos]
                 inner_text_1 = text[sq_cpos + 2 : first_cur_cpos]
                 inner_text_2 = text[first_cur_cpos + 2 : second_cur_cpos]
                 text = (
@@ -73,57 +72,68 @@ def demacro_3(text: str) -> str:
     return text
 
 
-def demacro_2(text: str) -> str:
-    for key, value in op_macros.items():
+def oper_demacro(text: str) -> str:
+    for key, value in oper_macros.items():
         while text.find(key) != -1:
             pos = text.find(key)
-            first_cur_cpos = bracket_cpos(text, ("{", "}"), pos + len(key))
-            inner_text_1 = text[pos + len(key) + 1 : first_cur_cpos]
+            cur_cpos = bracket_cpos(text, ("{", "}"), pos + len(key))
+            inner_text_1 = text[pos + len(key) + 1 : cur_cpos]
             text = (
-                text[:pos]
-                + value[0]
-                + inner_text_1
-                + value[1]
-                + text[first_cur_cpos + 1 :]
+                text[:pos] + value[0] + inner_text_1 + value[1] + text[cur_cpos + 1 :]
             )
     return text
 
 
-def demacro_1(text: str) -> str:
+def comm_demacro(text: str) -> str:
     replacements: list[tuple[str, str]] = [
+        (r"\ii ", r"\item "),
+        (r"\ii[", r"\item["),
+        (r"\wh", r"\widehat"),
+        (r"\wt", r"\widetilde"),
+        (r"\ol", r"\overline"),
+        (r"\epsilon", r"\eps"),
+        (r"\eps", r"\varepsilon"),
+        (r"\dang", r"\measuredangle"),
+        (r"\dg", r"^{\circ}"),
+        (r"\inv", r"^{-1}"),
+        (r"\half", r"\frac{1}{2}"),
+        (r"\GL", r"\operatorname{GL}"),
+        (r"\SL", r"\operatorname{SL}"),
+        # (r"\NN", r"{\mathbb N}"),
+        # (r"\ZZ", r"{\mathbb Z}"),
+        # (r"\CC", r"{\mathbb C}"),
+        # (r"\RR", r"{\mathbb R}"),
+        # (r"\QQ", r"{\mathbb Q}"),
+        # (r"\FF", r"{\mathbb F}"),
+        (r"\ts", r"\textsuperscript"),
+        (r"\opname", r"\operatorname"),
+        (r"\defeq", r"\overset{\text{def}}{=}"),
+        (r"\id", r"\operatorname{id}"),
+        (r"\ord", r"\operatorname{ord}"),
+        (r"\sign", r"\operatorname{sign}"),
+        (r"\injto", r"\hookrightarrow"),
+        (r"\vdotswithin=", r"\vdots"),
+        # Bubu additions
         (r"\csc", r"\operatorname{cosec}"),
         (r"\arccsc", r"\operatorname{arccsc}"),
         (r"\arcsec", r"\operatorname{arcsec}"),
         (r"\arccot", r"\operatorname{arccot}"),
-        (r"\ol", r"\overline"),
         (r"\ul", r"\underline"),
-        (r"\wt", r"\widetilde"),
-        (r"\wh", r"\widehat"),
-        (r"\eps", r"\varepsilon"),
         (r"\tri", r"\triangle"),
         (r"\para", r"\parallel"),
         (r"\arc", r"\widehat"),
         (r"\hrulebar", "\n-----\n"),
-        (r"\CC", r"\mathbb C"),
-        (r"\FF", r"\mathbb F"),
-        (r"\NN", r"\mathbb N"),
-        (r"\QQ", r"\mathbb Q"),
-        (r"\RR", r"\mathbb R"),
-        (r"\ZZ", r"\mathbb Z"),
-        (r"\ang", r"\ang"),
-        (r"\dang", r"\dang"),
-        (r"\ray", r"\overrightarrow"),
-        (r"\id", r"\operatorname{id}"),
-        (r"\inv", r"^{-1}"),
-        (r"\dg", r"^{\circ}"),
-        (r"\trans", r"^{\mathsf{T}}"),
-        (r"\ii", r"\item"),
-        (r"\opname", r"\operatorname"),
+        (r"\CC", r"\mathbb{C}"),
+        (r"\FF", r"\mathbb{F}"),
+        (r"\NN", r"\mathbb{N}"),
+        (r"\QQ", r"\mathbb{Q}"),
+        (r"\RR", r"\mathbb{R}"),
+        (r"\ZZ", r"\mathbb{Z}"),
         (r"\OO", r"\mathcal{O}"),
+        (r"\ang", r"\ang"),
+        (r"\ray", r"\overrightarrow"),
+        (r"\trans", r"^{\mathsf{T}}"),
         (r"\oo", r"\infty"),
-        (r"\vp", r"\nu_"),
-        (r"\ord", r"\operatorname{ord}_"),
-        (r"\Pow", r"\operatorname{Pow}_"),
         (r"\dgnin", r"90^{\circ}"),
         (r"\dgone", r"180^{\circ}"),
     ]
@@ -135,7 +145,7 @@ def demacro_1(text: str) -> str:
 
 def remove_soft_newlines(text: str) -> str:
     return re.sub(
-        r"[a-zA-Z.,;—\"–'):]\n[a-zA-Z$]",
+        r"[a-zA-Z.,;—\"–'):$]\n[a-zA-Z$]",
         lambda m: m.group(0).replace("\n", " "),
         text,
     )
@@ -143,9 +153,9 @@ def remove_soft_newlines(text: str) -> str:
 
 def toAOPS(text: str) -> str:
     DIVIDER = "\n" + r"-------------------" + "\n\n"
-    text = demacro_3(text)
-    text = demacro_2(text)
-    text = demacro_1(text)
+    text = derv_demacro(text)
+    text = oper_demacro(text)
+    text = comm_demacro(text)
     text = text.replace(r"\qedhere", "")
     text = text.replace(r"\begin{asy}", "\n" + "[asy]" + "\n")
     text = text.replace(r"\end{asy}", "\n" + "[/asy]")
@@ -157,6 +167,8 @@ def toAOPS(text: str) -> str:
     text = text.replace(r"\end{enumerate}", "[/list]")
     text = text.replace(r"\begin{itemize}", "[list]")
     text = text.replace(r"\end{itemize}", "[/list]")
+    text = text.replace(r"\begin{description}", "[list]")
+    text = text.replace(r"\end{description}", "[/list]")
     for env in [
         "theorem",
         "claim",
@@ -194,6 +206,9 @@ def toAOPS(text: str) -> str:
     text = re.sub(r"\\subparagraph{([^}]*)}", DIVIDER + r"[b]\1[/b]", text)
     text = re.sub(r"\\url{([^}]*)}", r"[url]\1[/url]", text)
     text = re.sub(r"\\href{([^}]*)}{([^}]*)}", r"[url=\1]\2[/url]", text)
+    text = re.sub(
+        r"\\item\[([^\]]*)\]", r"[*] [b]\1[/b]", text
+    )  # for description items
 
     return text
     # # Join together newlines
@@ -206,5 +221,6 @@ def toAOPS(text: str) -> str:
 
 if __name__ == "__main__":
     cliptext = pyperclip.paste()
-    cliptext = remove_soft_newlines(toAOPS(cliptext))
-    pyperclip.copy(toAOPS(cliptext))
+    cliptext = remove_soft_newlines(cliptext)
+    cliptext = toAOPS(cliptext)
+    pyperclip.copy(cliptext)
