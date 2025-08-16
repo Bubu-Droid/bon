@@ -19,7 +19,7 @@ hardness: easy
   Define
   \[
     G(x) = x^2 R(1) + x Q(1) + P(1)
-  \]
+  .\]
   Let $\omega$ be a $5$th root of unity.
   Plugging in
   $\omega^i$ for $1 \le i \le 4$
