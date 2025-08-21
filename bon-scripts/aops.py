@@ -99,12 +99,6 @@ def comm_demacro(text: str) -> str:
         (r"\half", r"\frac{1}{2}"),
         (r"\GL", r"\operatorname{GL}"),
         (r"\SL", r"\operatorname{SL}"),
-        # (r"\NN", r"{\mathbb N}"),
-        # (r"\ZZ", r"{\mathbb Z}"),
-        # (r"\CC", r"{\mathbb C}"),
-        # (r"\RR", r"{\mathbb R}"),
-        # (r"\QQ", r"{\mathbb Q}"),
-        # (r"\FF", r"{\mathbb F}"),
         (r"\ts", r"\textsuperscript"),
         (r"\opname", r"\operatorname"),
         (r"\defeq", r"\overset{\text{def}}{=}"),
@@ -130,7 +124,7 @@ def comm_demacro(text: str) -> str:
         (r"\RR", r"\mathbb{R}"),
         (r"\ZZ", r"\mathbb{Z}"),
         (r"\OO", r"\mathcal{O}"),
-        (r"\ang", r"\ang"),
+        (r"\ang", r"\angle"),
         (r"\ray", r"\overrightarrow"),
         (r"\trans", r"^{\mathsf{T}}"),
         (r"\oo", r"\infty"),
@@ -201,7 +195,7 @@ def toAOPS(text: str) -> str:
     text = re.sub(r"\\textit{([^}]*)}", r"[i]\1[/i]", text)
     text = re.sub(r"\\textbf{([^}]*)}", r"[b]\1[/b]", text)
     text = re.sub(
-        r"\\paragraph{([^}]*)}", DIVIDER + r"[color=blue][b]\1[/b][/solor]", text
+        r"\\paragraph{([^}]*)}", DIVIDER + r"[color=blue][b]\1[/b][/color]", text
     )
     text = re.sub(r"\\subparagraph{([^}]*)}", DIVIDER + r"[b]\1[/b]", text)
     text = re.sub(r"\\url{([^}]*)}", r"[url]\1[/url]", text)
