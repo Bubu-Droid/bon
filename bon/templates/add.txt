@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+
+\usepackage[min]{bubu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{BON PREVIEW}
+\author{Avigyan Chakraborty}
+\date{\today}
+
+\begin{document}
+
+\section*{$puid}
+
+%---%
+\begin{problem*}
+
+\end{problem*}
+%---%
+\begin{soln}
+
+\end{soln}
+%---%
+
+\end{document}

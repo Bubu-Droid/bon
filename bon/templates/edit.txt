@@ -1,0 +1,17 @@
+\documentclass[12pt]{article}
+
+\usepackage[min]{bubu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{BON PREVIEW}
+\author{Avigyan Chakraborty}
+\date{\today}
+
+\begin{document}
+
+\section*{$puid$source}
+
+$bon_inner_txt
+
+\end{document}
