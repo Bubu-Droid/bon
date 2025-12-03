@@ -1,0 +1,81 @@
+import json
+from pathlib import Path
+from string import Template
+from subprocess import Popen, run
+
+from . import watcher
+from .puid import fetch_file
+from .rc import (
+    EDIT_TEMP,
+    EDITOR,
+    HOME,
+    MODULE_NAME,
+    TERMINAL,
+    TEX_SEP,
+    TMP_FILE_NAME,
+    TMP_PATH,
+)
+
+
+def make_tex_code(db_content: dict, puid: str, tex_sep: str) -> str:
+    bon_inner_txt = (
+        tex_sep
+        + "\n"
+        + db_content["problem"]
+        + "\n"
+        + tex_sep
+        + "\n"
+        + ("\n" + tex_sep + "\n").join(db_content["solution"])
+        + "\n"
+        + tex_sep
+    )
+
+    if db_content["source"]:
+        source_list = []
+        for source in db_content["source"]:
+            if next(iter(source.values())):
+                source_list.append(
+                    f"\\href{{{next(iter(source.values()))}}}{{{next(iter(source))}}}"
+                )
+            else:
+                source_list.append(next(iter(source)))
+        source = " (" + ", ".join(source_list) + ")"
+    else:
+        source = ""
+
+    with EDIT_TEMP.open("r", encoding="utf-8") as f:
+        bon_edit_temp = Template(f.read())
+    bon_edit_temp = bon_edit_temp.substitute(
+        puid=puid, source=source, bon_inner_txt=bon_inner_txt
+    )
+
+    return bon_edit_temp
+
+
+def main(puid) -> None:
+    if fetch_file(puid) == Path(""):
+        print("PUID does not exist!")
+        return
+    db_file_path = Path(HOME) / MODULE_NAME / fetch_file(puid)
+    tmp_file_path = Path(TMP_PATH) / TMP_FILE_NAME
+
+    Path(TMP_PATH).mkdir(parents=True, exist_ok=True)
+    with db_file_path.open("r", encoding="utf-8") as f:
+        db_content = json.load(f)
+
+    tmp_file_path.write_text(make_tex_code(db_content, puid, TEX_SEP), encoding="utf-8")
+
+    Popen(
+        [
+            TERMINAL,
+            "-e",
+            "zsh",
+            "-c",
+            f"latexmk -pdf -pvc {TMP_FILE_NAME}",
+        ],
+        cwd=TMP_PATH,
+    )
+    observer = watcher.start_watcher(tmp_file_path, db_file_path)
+    run([EDITOR, tmp_file_path], check=False)
+    observer.stop()
+    observer.join()
