@@ -1,0 +1,16 @@
+{
+  "desc": "f(1/n)=1 prove f'(0)=f''(0)=0",
+  "puid": "ZD143D",
+  "source": [],
+  "tags": [
+    "differentiability",
+    "differentiation",
+    "mvt"
+  ],
+  "date": "2025-07-22",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}\n  Let $f\\colon \\RR\\to \\RR$ be a twice differentiable function\n  which satisfies\n  \\[\n    f\\left( \\frac{1}{n} \\right)=1\\quad \\forall n \\in \\NN\n  .\\]\n  Prove that $f'(0)=f''(0)=0$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  By continuity of $f(x)$, we get\n  $\\lim_{n \\to \\infty} f\\left(\\frac{1}{n}\\right) = f(0) = 1$.\n\n  Now note $f\\left(\\frac{1}{n}\\right)=f(0)=1$.\n  So by LMVT, there exists\n  $c_n \\in \\left(0, \\frac{1}{n}\\right)$ such that\n  \\[\n    f'(c_n) = \\frac{\n      f\\left(\\frac{1}{n}\\right) - f(0)\n    }{\\frac{1}{n} - 0}\n    = \\frac{1 - 1}{\\frac{1}{n}} = 0.\n  \\]\n  As $f(x)$ is twice differentiable,\n  $f'(x)$ is differentiable and thus continuous.\n  This implies\n  \\[\n    f'(0) = \\lim_{n \\to \\infty} f'(c_n) = 0.\n  \\]\n  So now, by the definition of derivative,\n  \\[\n    f''(0) = \\lim_{x \\to 0} \\frac{f'(x) - f'(0)}{x - 0}\n    = \\lim_{n \\to \\oo} \\frac{f'(c_n) - f'(0)}{c_n - 0}\n    = 0.\\qedhere\n  \\]\n\\end{soln}"
+  ]
+}

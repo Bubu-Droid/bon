@@ -1,0 +1,17 @@
+{
+  "desc": "(alpha,beta) lies on (a,f(a)) and (b,f(b)) prove tangent passes through (alpha,beta)",
+  "puid": "Z15E7F",
+  "source": [],
+  "tags": [
+    "differentiability",
+    "differentiation",
+    "mvt",
+    "mvtconstruct"
+  ],
+  "date": "2025-07-25",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}\n  Let $f \\colon [a, b] \\to [a, b]$ be\n  a differentiable function.\n  Consider a point $(\\alpha, \\beta)$ on the line\n  joining $(a, f(a))$ and $(b, f(b))$\n  such that $\\alpha \\notin [a, b]$.\n  Prove that there exists a tangent to the\n  curve passing through $(\\alpha, \\beta)$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Define\n  \\[\n    g(x) = \\frac{f(x) - \\beta}{x - \\alpha}.\n  \\]\n  Clearly $g(x)$ is differentiable. Then note that\n  \\[\n    g(a)\n    = \\frac{f(a) - \\beta}{a - \\alpha} \\quad\n    \\text{and} \\quad g(b)\n    = \\frac{f(b) - \\beta}{b - \\alpha}.\n  \\]\n  Since the points $(a, f(a))$, $(b, f(b))$,\n  and $(\\alpha, \\beta)$ lie on a straight line, the\n  slope of line joining $(a,f(a))$ and $(\\alpha,\\beta)$ \n  is equal to that of $(b,f(b))$ and $(\\alpha,\\beta)$.\n  Therefore, we have $g(a) = g(b)$.\n  So by LMVT on $(a, b)$, we get $c \\in (a,b)$ such that\n  \\[\n    g'(c) = \\frac{g(b) - g(a)}{b - a} = 0.\n  \\]\n  Note\n  \\[\n    g'(x) = \\frac{\n      f'(x)(x - \\alpha) - (f(x) - \\beta)\n    }{(x - \\alpha)^2}.\n  \\]\n\n  Therefore\n  \\[\n    g'(c)\n    = 0 \\implies f'(c)(c - \\alpha)\n    = f(c) - \\beta \\implies f'(c)\n    = \\frac{f(c) - \\beta}{c - \\alpha}.\n  \\]\n  Choosing $c$ as our point on the\n  curve through which the tangent passes,\n  we are done.\n\\end{soln}"
+  ]
+}

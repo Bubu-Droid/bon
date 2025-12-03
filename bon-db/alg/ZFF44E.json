@@ -1,0 +1,16 @@
+{
+  "desc": "P(x^5)+xQ(x^5)+x^2R(x^5)=(x^4+x^3+...+1)S(x) prove x-1|S(x)",
+  "puid": "ZFF44E",
+  "source": [],
+  "tags": [
+    "algebra",
+    "polynomial",
+    "complexno"
+  ],
+  "date": "2025-07-31",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}\n  Let $P(x)$, $Q(x)$, $R(x)$, $S(x)$ be polynomials\n  with real coefficients such that\n  \\[\n    P(x^5) + x Q(x^5) + x^2 R(x^5)\n    = (x^4 + x^3 + \\dots + 1) S(x)\n  \\]\n  for all $x \\in \\CC$. Prove that $x - 1 \\mid S(x)$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Define\n  \\[\n    G(x) = x^2 R(1) + x Q(1) + P(1)\n  .\\]\n  Let $\\omega$ be a fifth root of unity.\n  Plugging in\n  $\\omega^i$ for $1 \\le i \\le 4$\n  into the original equation gives\n  \\[\n    P(1) + \\omega^i Q(1)\n    + \\omega^{2i} R(1) = 0\n  .\\]\n  So $\\omega$, $\\omega^2$, $\\omega^3$,\n  $\\omega^4$ are roots of $G(x)$.\n\n  But note $\\deg(G(x)) \\le 2$ which forces $G \\equiv 0$\n  implying $P(1)=Q(1)=R(1)=0$.\n\n  Therefore, putting $x = 1$ into the original\n  equation gives\n  \\[\n    P(1) + Q(1) + R(1) = 5 S(1)\n  \\]\n  which implies\n  \\[\n    S(1) = 0 \\implies x - 1 \\mid S(x).\\qedhere\n  \\]\n\\end{soln}"
+  ]
+}

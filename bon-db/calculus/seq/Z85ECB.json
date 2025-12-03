@@ -1,0 +1,17 @@
+{
+  "desc": "f(2x-f(x))=x and f(x) injective prove f(x)=x",
+  "puid": "Z85ECB",
+  "source": [],
+  "tags": [
+    "continuity",
+    "funciterseq",
+    "sequence",
+    "series"
+  ],
+  "date": "2025-07-25",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}\n  Let $f\\colon [0, 1] \\to [0, 1]$ be a continuous function\n  which is injective and satisfies\n  \\[\n    f(2x - f(x)) = x.\n  \\]\n  Prove that $f(x) = x$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Put $x = 1$ to get $f(2 - f(1)) = 1$ and $x=0$\n  to get $f(-f(0))=0$. So, we get\n  $u$ and $v \\in [0, 1]$ such that\n  $f(u) = 0$ and $f(v) = 1$.\n\n  Now using the continuity of $f(x)$, we can conclude that\n  $f(x)$ is surjective. Since $f$ is also injective,\n  we conclude that $f$ is bijective. This implies\n  that $f(x)$ is invertible.\n\n  Now fix $x_1 \\in [0, 1]$ arbitrarily and define a\n  recursive sequence\n  $\\left\\{ x_{n} \\right\\}_{n \\ge 1}$ as follows:\n  \\[\n    x_{n+1} = f(x_n) \\quad \\forall\\, n \\in \\mathbb{N}.\n  \\]\n  Then from our original equation, we get\n  \\[\n    f(2x - f(x)) = x \\implies f(x) = 2x - f^{-1}(x).\n  \\]\n  Substituting $x \\mapsto x_{n+1}$, we get\n  \\[\n    f(x_{n+1}) = 2x_{n+1} - f^{-1}(x_{n+1})\n  \\]\n  which is equivalent to\n  \\[\n    x_{n+2}=2x_{n+1}-x_{n}\n  .\\]\n  Note that\n  \\[\n    x_{n+2}-x_{n+1}=x_{n+1}-x_{n}=\\dots=x_2-x_1\n  \\]\n  which implies $\\left\\{ x_{n} \\right\\}_{n\\ge 1}$ is an\n  A.P. If $d=x_2-x_1\\neq 0$, then $x_{n}=x_1+(n-1)d$ diverges\n  as $n \\to \\infty$. But the sequence is supposed\n  to be bounded as $f(x_n)$ is itself bounded.\n  This implies $x_2 = x_1$,\n  which further implies $f(x_1) = x_1$.\n  Since $x_1$ was chosen arbitrarily, we conclude\n  that $f(x) = x$ for all $x \\in [0, 1]$.\n\\end{soln}"
+  ]
+}
