@@ -12,9 +12,9 @@ It also contains a database which stores
 the LaTeX code of problems and their
 solutions that have been added by me.
 
-- [bon/](bon) --- Contains the scripts that this
+- [bon/](bon) — Contains the scripts that this
   project uses.
-- [bon-db/](bon-db) --- Database where I store
+- [bon-db/](bon-db) — Database where I store
   the code for problems, their solutions,
   and other relevant metadata.
 
@@ -226,14 +226,14 @@ as shown below:
 > [!NOTE]
 > The following categories are available as of now:
 >
-> - seq --- Sequences and series
-> - cont --- Continuity
-> - diff --- Differentiability
-> - int --- Integration
-> - geo --- Geometry
-> - nt --- Number theory
-> - combi --- Combinatorics
-> - alg --- Algebra
+> - seq — Sequences and series
+> - cont — Continuity
+> - diff — Differentiability
+> - int — Integration
+> - geo — Geometry
+> - nt — Number theory
+> - combi — Combinatorics
+> - alg — Algebra
 >
 > Using any other category results in printing
 > an appropriate message along with a list of
@@ -277,19 +277,19 @@ starts the continuous compilation of
 - The [bon/](bon) directory contains a few more scripts
   other than the ones mentioned above. Here is a brief
   description of each of those scripts:
-  - [niceasy.py](bon/niceasy.py) --- This takes the asymptote
+  - [niceasy.py](bon/niceasy.py) — This takes the asymptote
     code present in the clipboard, formats the code into a
     readable format, and replaces the content of the
     clipboard with the formatted code.
-  - [aops.py](bon/aops.py) --- This takes the LaTeX code present in the
+  - [aops.py](bon/aops.py) — This takes the LaTeX code present in the
     clipboard and formats that into AoPS compatible
     format. You can get a fair idea of what this script does
     by going through the script.
-  - [puid.py](bon/puid.py) --- Its functionalities include
+  - [puid.py](bon/puid.py) — Its functionalities include
     generating a random PUID, validating if a PUID
     is unique, and fetching the path of a file using its
     PUID.
-  - [watcher.py](bon/watcher.py) --- This watches the
+  - [watcher.py](bon/watcher.py) — This watches the
     LaTeX document that is being edited. Every time
     the document is updated, it fires up a function which
     writes the new changes into the database.
@@ -356,9 +356,9 @@ instead where `<dir-name>` is the name of the auxiliary directory.
 The commands for adding problem/solution(s)
 from the database should be like:
 
-- `\bonincludle{problem}{<PUID>}` ---
+- `\bonincludle{problem}{<PUID>}` —
   When you want to add the problem statement.
-- `\boninclude{soln}{<PUID>}` ---
+- `\boninclude{soln}{<PUID>}` —
   When you want to add the solution(s)
   for the corresponding problem.
 
