@@ -2,171 +2,169 @@
 
 ## A problem database written in Python (inspired by VON)
 
-This repository contains the scripts that are used by BON
-inside the [bon-scripts/](bon-scripts) directory. Furthermore, the raw
-source code of the problems in the
-database are present in [bon-db/](bon-db)
-for storage purposes. For anyone trying to
-analyze how the scripts work, the
-directory [bon-db/](bon-db) can safely be ignored.
+BON is a problem database management system
+written in Python after being inspired by
+[Evan Chen][evan_chen]'s project,
+[VON][von]. This repository
+contains the source code of the scripts
+involved in the working of this project.
+It also contains a database which stores
+the LaTeX code of problems and their
+solutions that have been added by me.
+
+- [bon/](bon) --- Contains the scripts that this
+  project uses.
+- [bon-db/](bon-db) --- Database where I store
+  the code for problems, their solutions,
+  and other relevant metadata.
 
 I have tried keeping this project as minimal as possible.
 For searching problems using relevant keyword(s), I use
 a plugin for neovim called [nvim-telescope][nvimtelescope]
 which allows me to fuzzy find the problem
-present in the database using relevant
-keyword(s). Moreover, I have the auxiliary directory set
-to a different directory; thus I do not need to manage/clear
-the temporary build files that are automatically
-generated.
+present in the database.
+However, I may add a dedicated
+search functionality later on.
 
 ## Installation
 
-> **_NOTE:_** Before you start, make sure you are using your
-> own user and not
-> the root one. You can check that by using `whoami`.
+> [!IMPORTANT]
+> Before you start, make sure you are using your
+> own user, not
+> the root. You can check that by using `whoami`.
 
-1. Run `cd $HOME` to go to your `HOME` directory.
+1. Change the current working directory
+   to your `HOME` directory.
    (This is essential for BON to work as intended.)
 
-2. Run `git clone git@github.com:Bubu-Droid/bon.git` to
-   clone the git repository in your `HOME` directory.
+2. Clone this git repository in your `HOME` directory.
 
-3. Add the `bon-scripts/` directory to your path.
-   (Basically add `$HOME/bon/bon-scripts` to your
-   `PATH` variable in `.zshrc` or its alternative.)
+3. Add the parent `bon/` directory to your PYTHONPATH.
+   (Basically, add `export PYTHONPATH="$PYTHONPATH:$HOME/bon"`
+   to your `.zshrc` or its alternative.)
+
+4. Install the required Python packages that are
+   listed in [requirements.txt](requirements.txt)
+
+<!-- 4. Add the `bon/` directory to your path. -->
+<!--    (Basically add `$HOME/bon/bon` to your -->
+<!--    `PATH` variable in `.zshrc` or its alternative.) -->
 
 ## Configuration
 
-1. Most of the relevant variables are present in
-   [bon.py](bon-scripts/bon.py).
+1. Almost all of the
+   relevant configuration variables
+   can be found in [rc.py](bon/rc.py)
    The LaTeX templates that
-   are used while adding, editing or previewing are
-   in their respective
-   [add.py](bon-scripts/add.py),
-   [edit.py](bon-scripts/edit.py),
-   and [preview.py](bon-scripts/preview.py)
-   files respectively.
+   are used while adding, editing,
+   or previewing can be found in the
+   [templates](bon/templates/) directory.
 
+> [!IMPORTANT]
 > It is STRONGLY recommended that you use my
 > [bubu.sty][bubusty]
 > file while using BON since the templates are based
 > on [bubu.sty][bubusty]
-> itself. Moreover, if you are trying to integrate LaTeX
-> and `bon-db/`, the necessary environments
-> are defined by default in [bon.tex][bontex].
+> itself. Moreover, if you are trying to integrate BON
+> with LaTeX, the necessary environments
+> are defined by default in [bon.tex][bontex] using
+> `pythontex`.
 
 ## Usage
 
-Use `bon.py -h` to display the available options. As of
-now (2025-05-29), the help command returns the following
+Use `python3 -m bon -h` to display the available options. As of
+now (2025-12-04), the help command returns the following
 output:
 
 ```text
-usage: bon.py [-h] [-a] [-e puid] [-p puid]
+usage: __main__.py [-h] [-a category] [-e puid] [-p puid]
 
 BON DB Manager
 
 options:
   -h, --help          show this help message and exit
-  -a, --add           Add a problem into the database
-  -e, --edit puid     Edit a problem in the database
-  -p, --preview puid  Preview the pdf of a problem in the database
+  -a, --add category  add a problem into the database
+  -e, --edit puid     edit a problem in the database
+  -p, --preview puid  preview the pdf of a problem in the database
 ```
 
 More exposition about how the script works has been provided in
 [this](#working-of-bonpy-script) section later on.
 
-> **_NOTE:_** After the introduction of
-> [watcher.py](bon-scripts/watcher.py)
+> [!NOTE]
+> After the introduction of
+> [watcher.py](bon/watcher.py)
 > (introduced in commit [`7c72c30`][7c72c30]),
 > the script now automates
-> the interaction between `bon-db/` and the TeX file that
-> you are editing. Any change made in the file
-> is automatically written into the database. (Just make sure that
-> you are using the `TEX_SEP` variable (default: `\n%---%\n`)
+> the interaction between `bon-db/` and the LaTeX document
+> that you are editing. Any change made in the file
+> is automatically written into the database.
+> Just ensure that
+> you are using the `TEX_SEP` variable (default: `%---%`)
 > to separate problem statement and individual
-> solutions. Check the dummy TeX template given in
-> [this](working-of-bonpy-script) section.)
+> solutions. Check the dummy LaTeX template given in
+> [this](working-of-bonpy-script) section for more information.
 
-## DB file structure and a few more tools
-
-- By default, the problems are stored using
-  `.txt` extension inside the [bon-db/](bon-db) directory
-  after splitting the
-  problem statement, first solution, second solution and so on.
-  (A sample database file has been shown in the next section.)
-
-- The [bon-scripts/](bon-scripts) directory contains a few more scripts
-  other than the ones mentioned above.
-  - [niceasy.py](bon-scripts/niceasy.py) - This takes the asymptote code
-    present in the clipboard, formats the code into a
-    readable format and replaces the content of the clipboard
-    with the formatted code.
-  - [aops.py](bon-scripts/aops.py) - This takes the TeX code present in the
-    clipboard and formats that into AoPS compatible
-    format. You can get a fair idea of what this script does
-    by going through the script.
-  - [puid_gen.py](bon-scripts/puid_gen.py) - This generates a random PUID
-    which is used to store a problem into the database.
-  - [watcher.py](bon-scripts/watcher.py) - This watches the
-    TeX file that is being edited. Every time
-    the TeX file is updated, it fires up a function which
-    writes the new changes into the database.
+By default, the problems are stored in
+json format inside
+[bon-db/](bon-db) directory
+after separating the
+problem statement and individual solutions.
+(A sample database file has been shown in the next section.)
 
 ## An example of a file in the DB
 
-```text
-desc: <short-description-of-the-problem-statement> (used for searching)
-puid: <puid> (this is automatically added into the file once generated)
-source: [<source(s)>] (used for searching)
-tags: [<tag(s)>] (used for searching)
-date: <yyyy-mm-dd> (this is automatically added into the file once generated)
-hardness: <hardness> (additional parameter for searching)
----
-\begin{problem}
-  [\href{<url>}{<source>}] (this line is added manually)
-  <problem-statement>
-\end{problem}
----
-\begin{soln}
-  <solution>
-\end{soln}
+```json
+{
+  "desc": "<short-description-of-the-problem-statement>" (used for searching),
+  "puid": "<puid>" (this is automatically added into the file once generated),
+  "source": ["<source(s)>"] (used for searching),
+  "tags": ["<tag(s)>"] (used for searching),
+  "date": "<yyyy-mm-dd>" (this is automatically added into the file once generated),
+  "hardness": "<hardness>" (additional parameter for searching),
+  "problem": "<problem-statement>",
+  "solution": ["<solution(s)>"]
+}
 ```
 
-An example has been provided where the problem has multiple
-solutions.
+The following example illustrates the case where the problem
+has multiple solutions. Moreover, if the value of
+some source is kept empty (as seen below in case of
+"NO-URL" key), then the source is printed
+as plain text instead of a link.
 
-```text
-desc: find the value of 1 + 1
-puid: DUMMY
-source: [unknown, ohio]
-tags: [ohioproblem, weird]
-date: 2025-05-29
-hardness: easy
----
-\begin{problem}
-  [\href{https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra}{Ohio TST 2069/1}]
-  Find the value of $1 + 1$.
-\end{problem}
----
-\begin{soln}
-  Using basic arithmetic, we find that the answer is $2$.
-\end{soln}
----
-\begin{soln}
-  Using Ohio algebra, the answer turns out to be $2$.
-\end{soln}
+```json
+{
+  "desc": "find the value of 1 + 1",
+  "puid": "DUMMY",
+  "source": [
+    {
+      "Ohio TST 2069/1": "https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra"
+    },
+    {
+      "NO-URL": ""
+    }
+  ],
+  "tags": ["ohioproblem", "weird"],
+  "date": "2025-05-29",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}\n  Find the value of $1 + 1$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Using basic arithmetic, we find that the answer is $2$.\n\\end{soln}",
+    "\\begin{soln}\n  Using Ohio algebra, the answer turns out to be $2$.\n\\end{soln}"
+  ]
+}
 ```
 
-The corresponding LaTeX template for `DUMMY.txt` is
+The corresponding LaTeX code generated
+for editing the above json file is:
 
-```text
+```latex
 \documentclass[12pt]{article}
 
 \usepackage[min]{bubu}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{BON PREVIEW}
 \author{Avigyan Chakraborty}
@@ -174,13 +172,12 @@ The corresponding LaTeX template for `DUMMY.txt` is
 
 \begin{document}
 
-\section*{DUMMY}
+\section*{DUMMY (\href{https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra}{Ohio TST 2069/1}, NO-URL)}
 
 %---%
-\begin{problem}
-  [\href{https://youtu.be/xvFZjo5PgG0?si=iPYyHeV4nMsyidra}{Ohio TST 2069/1}]
+\begin{problem*}
   Find the value of $1 + 1$.
-\end{problem}
+\end{problem*}
 %---%
 \begin{soln}
   Using basic arithmetic, we find that the answer is $2$.
@@ -194,47 +191,113 @@ The corresponding LaTeX template for `DUMMY.txt` is
 \end{document}
 ```
 
-## Working of [bon.py](bon-scripts/bon.py) script
+## Working of BON
 
 Assuming that the default variables are unchanged,
 the working of the
-script can be split into three cases as shown below.
+script can be split into the following cases
+as shown below:
 
-- When `bon.py -a` is run, [puid_gen.py](bon-scripts/puid_gen.py)
-  generates a random (and unique) PUID and
-  creates a file by the name `<PUID>.txt` inside
-  `bon-db/`
-  directory using the bare DB template provided in
-  [add.py](bon-scripts/add.py). The script then creates another file
-  at `/tmp/preview/bon-preview.tex` using the bare TeX template
-  provided in [add.py](bon-scripts/add.py). After the TeX file is
+- When `python3 -m bon -a <CATEGORY>`
+  is run, [puid.py](bon/puid.py)
+  generates a random (and unique) PUID
+  which is then piped into [edit.py](bon/edit.py).
+  Then a file with the name `<PUID>.json`
+  is created inside `bon-db/<CATEGORY>/`
+  directory and an empty template
+  is written into it.
+  The script then creates another file
+  at `/tmp/preview/bon-preview.tex`
+  using the template
+  provided in
+  [templates/add.txt](bon/templates/add.py).
+  After the LaTeX document is
   made, the script opens a new instance of `alacritty`
   and runs the command `latexmk -pdf -pvc bon-preview.tex`
   after changing directories. While this is being done,
-  the script also fires up a watchdog which is responsible for
+  the script also fires up an
+  Observer instance which is responsible for
   monitoring and
   automatically writing changes into the database when the
-  TeX file is updated. When the compilation is stopped,
+  LaTeX document is updated. When the compilation is stopped,
   this new terminal instance is automatically killed.
-  When the editor is quit, the watchdog is also stopped.
+  When the editor is quit, the Observer is also stopped.
 
-- When `bon.py -e <PUID>` is run, the script searches the
-  database for the file (errors aren't handled cuz I thought I'm
-  not dumb enough to enter incorrect file name :P). Then it
-  extracts the required data from `<PUID>.txt`
-  and wraps it using the bare TeX template present in
-  [edit.py](bon-scripts/edit.py). Finally, it launches the editor and
-  starts the continuous compilation of `latexmk` analogously
-  as in the previous case.
+> [!NOTE]
+> The following categories are available as of now:
+>
+> - seq --- Sequences and series
+> - cont --- Continuity
+> - diff --- Differentiability
+> - int --- Integration
+> - geo --- Geometry
+> - nt --- Number theory
+> - combi --- Combinatorics
+> - alg --- Algebra
+>
+> Using any other category results in printing
+> an appropriate message along with a list of
+> all the available valid categories followed by the
+> termination of the script.
 
-- When `bon.py -p <PUID>` is run, the script behaves similarly
-  as the previous two cases except that no editor is launched and
+- When `python3 -m bon -e <PUID>` is run,
+  the script searches for `<PUID>.json`
+  recursively through the database.
+  The current structure of the database is as follows:
+
+  ```text
+    /home/bubu/bon/bon-db
+    ├── alg
+    ├── calculus
+    │   ├── cont
+    │   ├── diff
+    │   ├── int
+    │   └── seq
+    ├── combi
+    ├── geo
+    └── nt
+  ```
+
+If the file is not found, it prints an appropriate
+message and the script is terminated.
+Otherwise, it
+extracts the required data from `<PUID>.json`
+and wraps it using the template present in
+[templates/edit.txt](bon/templates/edit.py).
+Finally, it launches the editor and
+starts the continuous compilation of
+`latexmk`, analogous to that in the previous case.
+
+- When `python3 -m bon -p <PUID>` is run,
+  the script behaves similarly
+  as the previous two cases except that no editor is
+  launched and
   that the flags used with `latexmk` are `-pdf` and `-pv` only.
+
+- The [bon/](bon) directory contains a few more scripts
+  other than the ones mentioned above. Here is a brief
+  description of each of those scripts:
+  - [niceasy.py](bon/niceasy.py) --- This takes the asymptote
+    code present in the clipboard, formats the code into a
+    readable format, and replaces the content of the
+    clipboard with the formatted code.
+  - [aops.py](bon/aops.py) --- This takes the LaTeX code present in the
+    clipboard and formats that into AoPS compatible
+    format. You can get a fair idea of what this script does
+    by going through the script.
+  - [puid.py](bon/puid.py) --- Its functionalities include
+    generating a random PUID, validating if a PUID
+    is unique, and fetching the path of a file using its
+    PUID.
+  - [watcher.py](bon/watcher.py) --- This watches the
+    LaTeX document that is being edited. Every time
+    the document is updated, it fires up a function which
+    writes the new changes into the database.
 
 ## LaTeX integration
 
-The `pythontex` library can be used to include raw data
-from database files in other documents.
+The `pythontex` library can be used to include the LaTeX
+code of a file from the database in other LaTeX documents.
 
 In order to do so, add the following lines into your `*.sty`
 file.
@@ -253,21 +316,22 @@ file.
 }
 ```
 
+> [!TIP]
 > [bubu.sty][bubusty] has everything configured by default.
 > Only the `bon` option has to be passed while including the
 > package,
-> i.e., `\usepackage[bon]{bubu}`.
+> that is, `\usepackage[bon]{bubu}`.
 
 After adding the lines above, download [bon.tex][bontex]
-and move the file to your working directory.
+and move the file into your working directory.
 Then add the line
 `\input{bon}` right after `\begin{document}`.
 
 This should be it.
 
-For configuring `latexmk` to automatically compile the document
-using `pythontex` when necessary, add the following lines into
-your `latexmkrc`.
+For configuring `latexmk` to automatically
+compile the document using `pythontex` whenever necessary,
+add the following lines into your `latexmkrc`.
 
 ```perl
 sub pythontex {
@@ -278,11 +342,13 @@ sub pythontex {
 add_cus_dep("pytxcode", "pytxmcr", 0, "pythontex");
 ```
 
+> [!TIP]
 > I suggest you add this to the local `latexmkrc`
 > configuration file as adding this into the global `latexmkrc`
 > unnecessarily slows down the compilation.
 
-If you use an auxiliary directory for storing extraneous files
+If you use an auxiliary directory for storing
+temporary build files
 that are produced during compilation,
 use `system("touch <dir-name>/\$(basename \"$_[0]\").pytxmcr");`
 instead where `<dir-name>` is the name of the auxiliary directory.
@@ -290,16 +356,18 @@ instead where `<dir-name>` is the name of the auxiliary directory.
 The commands for adding problem/solution(s)
 from the database should be like:
 
-- `\bonincludle{problem}{<PUID>}` - When you want to add the problem statement
-  with the problem number.
-- `\boninclude{soln}{<PUID>}` - When you want to add the solution(s)
+- `\bonincludle{problem}{<PUID>}` ---
+  When you want to add the problem statement.
+- `\boninclude{soln}{<PUID>}` ---
+  When you want to add the solution(s)
   for the corresponding problem.
 
-Here you can use `problem`, `problem*`, `exercise`, `exercise*`,
+Here, you can also use
+`problem`, `problem*`, `exercise`, `exercise*`,
 `example`, `exmaple*`, `soln`, `solution`
 as the first argument in
 `\boninclude{}{}`. Furthermore, `soln` and `solution` are
-interchangeable.
+equivalent, and hence, interchangeable.
 
 ---
 
@@ -317,3 +385,5 @@ a cute coincidence. :laughing:
 [bontex]: https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bon.tex
 [nvimtelescope]: https://github.com/nvim-telescope/telescope.nvim
 [7c72c30]: https://github.com/Bubu-Droid/bon/commit/7c72c30af36b77ba13efb63b2d32e6d3d21e7c62
+[evan_chen]: https://github.com/vEnhance
+[von]: https://github.com/vEnhance/von
