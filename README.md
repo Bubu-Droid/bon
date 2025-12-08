@@ -305,14 +305,13 @@ file.
 ```latex
 \RequirePackage{pythontex}
 \setpythontexoutputdir{.}
-\newcommand{\bubuprob}[1]{%
-\py{print_bubuproblem(r"#1")}%
+\newcommand{\bonhook}[1]{%
+  \normalmarginpar%
+  \noindent%
+  \marginpar{\hspace*{1em}\scriptsize\ttfamily\color{Green}#1}%
 }
-\newcommand{\bubuprobnonum}[1]{%
-\py{print_bubuproblem_nonum(r"#1")}%
-}
-\newcommand{\bubusoln}[1]{%
-\py{print_bubusoln(r"#1")}%
+\newcommand{\boninclude}[2]{%
+  \pyc{print(boninclude(r"#1", r"#2"))}%
 }
 ```
 
@@ -353,19 +352,19 @@ that are produced during compilation,
 use `system("touch <dir-name>/\$(basename \"$_[0]\").pytxmcr");`
 instead where `<dir-name>` is the name of the auxiliary directory.
 
-The commands for adding problem/solution(s)
+The commands for fetching problem statement/solution(s)
 from the database should be like:
 
-- `\bonincludle{problem}{<PUID>}` —
+- `\bonincludle{<PUID>}{problem}` —
   When you want to add the problem statement.
-- `\boninclude{soln}{<PUID>}` —
+- `\boninclude{<PUID>}{soln}` —
   When you want to add the solution(s)
   for the corresponding problem.
 
 Here, you can also use
 `problem`, `problem*`, `exercise`, `exercise*`,
 `example`, `exmaple*`, `soln`, `solution`
-as the first argument in
+as the second argument in
 `\boninclude{}{}`. Furthermore, `soln` and `solution` are
 equivalent, and hence, interchangeable.
 
