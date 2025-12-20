@@ -93,7 +93,7 @@ def comm_demacro(text: str) -> str:
         (r"\ol", r"\overline"),
         (r"\epsilon", r"\eps"),
         (r"\eps", r"\varepsilon"),
-        (r"\dang", r"\measuredangle"),
+        (r"\dang ", r"\measuredangle "),
         (r"\dg", r"^{\circ}"),
         (r"\inv", r"^{-1}"),
         (r"\half", r"\frac{1}{2}"),
@@ -115,7 +115,7 @@ def comm_demacro(text: str) -> str:
         (r"\ul", r"\underline"),
         (r"\tri", r"\triangle"),
         (r"\para", r"\parallel"),
-        (r"\arc", r"\widehat"),
+        (r"\arc{", r"\widehat{"),
         (r"\hrulebar", "\n-----\n"),
         (r"\CC", r"\mathbb{C}"),
         (r"\FF", r"\mathbb{F}"),
@@ -138,10 +138,11 @@ def comm_demacro(text: str) -> str:
 
 
 def remove_soft_newlines(text: str) -> str:
+    strip_text = "\n".join(line.lstrip() for line in text.splitlines())
     return re.sub(
-        r"[a-zA-Z.,;—\"–'):$]\n[a-zA-Z$]",
+        r"[a-zA-Z.,;—\"–'):$]\n[a-zA-Z$'\"]",
         lambda m: m.group(0).replace("\n", " "),
-        text,
+        strip_text,
     )
 
 
@@ -173,19 +174,19 @@ def toAOPS(text: str) -> str:
         "remark",
     ]:
         text = text.replace(
-            r"\begin{" + env + "*}",
+            r"\begin{" + env + "*}\n",
             "\n\n" + "[b][color=red]" + env.title() + ":[/color][/b] ",
         )
         text = text.replace(r"\end{" + env + "*}", "")
         text = text.replace(
-            r"\begin{" + env + "}",
+            r"\begin{" + env + "}\n",
             "\n\n" + "[b][color=red]" + env.title() + ":[/color][/b] ",
         )
         text = text.replace(r"\end{" + env + "}", "")
-    text = text.replace(r"\begin{proof}", "[i]Proof.[/i] ")
-    text = text.replace(r"\end{proof}", r"$\square$" + "\n")
-    text = text.replace(r"\begin{subproof}", "[i]Proof.[/i] ")
-    text = text.replace(r"\end{subproof}", r"$\square$" + "\n")
+    text = text.replace("\\begin{proof}\n", "[i]Proof.[/i] ")
+    text = text.replace("\n\\end{proof}", r" $\square$" + "\n")
+    text = text.replace("\\begin{subproof}\n", "[i]Proof.[/i] ")
+    text = text.replace("\n\\end{subproof}", r" $\square$" + "\n")
     text = text.replace(r"\bigskip", DIVIDER)
     text = text.replace(r"\medskip", DIVIDER)
     text = text.replace(r"\#", "#")
