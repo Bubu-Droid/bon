@@ -1,7 +1,11 @@
 {
   "desc": "a_n=7a_{n-1}^2+a_{n-2} find remainder of a_{2025!} modulo 43",
   "puid": "Z69E82",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c6h3734787p36720144"
+    }
+  ],
   "tags": [
     "combi",
     "php",

@@ -1,7 +1,11 @@
 {
   "desc": "f(1)=f(0)=f'(0)=...=f^{(n)}(0)=0 prove f^{(n+1)}(eps)=0",
   "puid": "ZF51A6",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3734782p36719991"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation",

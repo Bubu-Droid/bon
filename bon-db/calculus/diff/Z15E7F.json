@@ -1,7 +1,11 @@
 {
   "desc": "(alpha,beta) lies on (a,f(a)) and (b,f(b)) prove tangent passes through (alpha,beta)",
   "puid": "Z15E7F",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3733366p36704267"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation",

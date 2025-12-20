@@ -1,7 +1,11 @@
 {
   "desc": "f(1/n)=1 prove f'(0)=f''(0)=0",
   "puid": "ZD143D",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3734779p36719961"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation",

@@ -1,7 +1,11 @@
 {
   "desc": "f(a)=f(b) and f'(a)=f'(b) prove f''(c)-lambda f'(c)^2=0",
   "puid": "Z406B7",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3734118p36712155"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation",

@@ -1,7 +1,11 @@
 {
-  "desc": "|f'(x)|<=|f(x)| prove f(x)=0",
+  "desc": "|f'(x)|<=|f(x)| and f(0)=0 prove f(x)=0",
   "puid": "ZAFC5E",
-  "source": [],
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3733328p36703676"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation",
@@ -16,3 +20,4 @@
     "\\begin{soln}\n  Since $|f(x)|$ is continuous over $[0,1]$, it must be\n  bounded. Let $M = \\max_{x \\in [0,1]} |f(x)|$.\n  Also let\n  $S = \\{ x \\in [0,1] \\mid |f(x)| = M \\}$.\n  Since $x \\in [0,1]$, $S$ must be bounded.\n  Let $c = \\inf \\{S\\}$.\n  By continuity, $|f(c)| = M$.\n  \\begin{claim*}\n    $c=0$.\n  \\end{claim*}\n  \\begin{subproof}\n    For the sake of contradiction, assume that\n    $c > 0$. Then by the LMVT on $[0,c]$,\n    we get $t \\in (0,c)$ such that\n    \\[\n      f'(t) = \\frac{f(c) - f(0)}{c - 0}\n      = \\frac{f(c)}{c}.\n    \\]\n    So,\n    \\[\n      |f(c)| = |c| \\cdot |f'(t)|.\n    \\]\n    Clearly $0 < c \\leq 1$, so\n    \\[\n      |f(c)| = c \\cdot |f'(t)| \\leq |f'(t)| \\leq |f(t)|.\n    \\]\n    But then\n    \\[\n      M = |f(c)| \\leq |f(t)| \\leq M \\implies |f(t)| = M.\n    \\]\n    Since $t < c$, this contradicts the\n    minimality of $c$ and our claim is proved.\n  \\end{subproof}\n  Therefore\n  \\[\n    M = |f(c)| = |f(0)| = 0\n  \\]\n  which implies\n  \\[\n    |f(x)| \\leq M\n    = 0 \\implies f(x)\n    = 0 \\quad \\forall\\, x \\in [0,1].\n  \\]\n\\end{soln}"
   ]
 }
+

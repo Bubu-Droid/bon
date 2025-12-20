@@ -1,7 +1,11 @@
 {
   "desc": "P(x^5)+xQ(x^5)+x^2R(x^5)=(x^4+x^3+...+1)S(x) prove x-1|S(x)",
   "puid": "ZFF44E",
-  "source": [],
+  "source": [
+    {
+      "USAMO 1976 P5": "https://aops.com/community/c6h342993p1834510"
+    }
+  ],
   "tags": [
     "algebra",
     "polynomial",
