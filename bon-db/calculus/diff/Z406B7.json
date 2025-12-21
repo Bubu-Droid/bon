@@ -14,7 +14,7 @@
   ],
   "date": "2025-07-22",
   "hardness": "medium",
-  "problem": "\\begin{problem*}\n  Let $f\\colon [a,b] \\to \\RR$ be a continuous function which\n  is differentiable on $(a,b)$. Given that\n  $f(a)=f(b)$ and $f'(a)=f'(b)$, prove that\n  for all $\\lambda \\in \\RR$,\n  \\[\n    f''(x) - \\lambda f'(x)^2 = 0\n  \\]\n  has at least one real root.\n\\end{problem*}",
+  "problem": "\\begin{problem*}{}{}\n  Let $f\\colon [a,b] \\to \\RR$ be a continuous function which\n  is differentiable on $(a,b)$. Given that\n  $f(a)=f(b)$ and $f'(a)=f'(b)$, prove that\n  for all $\\lambda \\in \\RR$,\n  \\[\n    f''(x) - \\lambda f'(x)^2 = 0\n  \\]\n  has at least one real root.\n\\end{problem*}",
   "solution": [
     "\\begin{soln}\n  Define $g(x)=\\frac{f'(x)}{e^{\\lambda f(x)}}$.\n  Clearly $g(x)$ is continuous on\n  $[a,b]$ and differentiable on $(a,b)$. Then note that\n  \\[\n    g(a)=\\frac{f'(a)}{e^{\\lambda f(a)}}\n    =\\frac{f'(b)}{e^{\\lambda f(b)}}\n    = g(b)\n  .\\]\n  Therefore, by LMVT, there exists $c \\in (a,b)$ such that\n  \\[\n    g'(c)=\\frac{g(b)-g(a)}{b-a}=0\n  .\\]\n\n  Note\n  \\[\n    g'(x) = \\frac{\n      f''(x)e^{\\lambda f(x)} - f'(x)^2e^{\\lambda f(x)}\n    }{e^{2\\lambda f(x)}}\n  .\\]\n  \n  So\n  \\[\n    g'(c) = 0\n    \\implies f''(c)-\\lambda f'(c)^2=0\n  ,\\]\n  as desired.\n\\end{soln}"
   ]

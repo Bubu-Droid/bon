@@ -13,7 +13,7 @@
   ],
   "date": "2025-07-22",
   "hardness": "easy",
-  "problem": "\\begin{problem*}\n  Let $f\\colon [0, 1] \\to \\mathbb{R}$ be a function which is\n  $n+1$ times differentiable and satisfies\n  \\[\n    f(1) = f(0) = f'(0) = \\dots = f^{(n)}(0) = 0.\n  \\]\n  Prove that there exists $\\eps \\in (0, 1)$ such that\n  $f^{(n+1)}(\\eps) = 0$.\n\\end{problem*}",
+  "problem": "\\begin{problem*}{}{}\n  Let $f\\colon [0, 1] \\to \\mathbb{R}$ be a function which is\n  $n+1$ times differentiable and satisfies\n  \\[\n    f(1) = f(0) = f'(0) = \\dots = f^{(n)}(0) = 0.\n  \\]\n  Prove that there exists $\\eps \\in (0, 1)$ such that\n  $f^{(n+1)}(\\eps) = 0$.\n\\end{problem*}",
   "solution": [
     "\\begin{soln}\n  As $f(1) = f(0) = 0$, by LMVT we get\n  $\\eps_{1} \\in (0, 1)$ such that $f'(\\eps_{1}) = 0$.\n  Now as $f'(\\eps_{1}) = f'(0) = 0$, again by\n  LMVT we get\n  $\\eps_2 \\in (0, \\eps_{1})$ such that\n  $f''(\\eps_2) = 0$.\n  Suppose we have $\\eps_k\\in (0, 1)$ with\n  $k \\le n$ such that $f^{(k)}(\\eps_k) = 0$.\n  Now, as $f^{(k)}(x)$ is differentiable,\n  by LMVT, we get\n  $\\eps_{k+1}\\in (0, \\eps_{k})$\n  such that $f^{(k+1)}(\\eps_{k+1}) = 0$.\n  Continuing as above, we get\n  $\\eps_{n+1}$ such that $f^{(n+1)}(\\eps_{n+1})=0$,\n  as desired.\n\\end{soln}"
   ]

@@ -13,9 +13,8 @@
   ],
   "date": "2025-07-23",
   "hardness": "medium",
-  "problem": "\\begin{problem*}\n  Let $f\\colon [a, b] \\to [a, b]$ be a differentiable\n  function such that $f(a) = a$ and $f(b) = b$.\n  Prove that there exist $u$, $v \\in (a, b)$ such that\n  $u < v$ and $f'(u) + f'(v) = 2$.\n\\end{problem*}",
+  "problem": "\\begin{problem*}{}{}\n  Let $f\\colon [a, b] \\to [a, b]$ be a differentiable\n  function such that $f(a) = a$ and $f(b) = b$.\n  Prove that there exist $u$, $v \\in (a, b)$ such that\n  $u < v$ and $f'(u) + f'(v) = 2$.\n\\end{problem*}",
   "solution": [
     "\\begin{soln}\n  By LMVT on $\\left[a, \\frac{a+b}{2}\\right]$, we get that there exists\n  $u \\in \\left(a, \\frac{a+b}{2}\\right)$ such that\n  \\[\n    f'(u)\n    = \\frac{\n      f\\left(\\frac{a+b}{2}\\right) - f(a)\n    }{\\frac{a+b}{2} - a}\n    = \\frac{2}{b - a}\n    \\cdot \\left(f\\left(\\frac{a+b}{2}\\right) - f(a)\\right).\n  \\]\n  Similarly by LMVT on $\\left[\\frac{a+b}{2}, b\\right]$,\n  we get that there exists\n  $v \\in \\left(\\frac{a+b}{2}, b\\right)$ such that\n  \\[\n    f'(v) = \\frac{\n      f(b) - f\\left(\\frac{a+b}{2}\\right)\n    }{b - \\frac{a+b}{2}}\n    = \\frac{2}{b - a}\n    \\cdot \\left(f(b) - f\\left(\\frac{a+b}{2}\\right)\\right).\n  \\]\n  Clearly $u < v$ and\n  \\[\n    f'(u) + f'(v) = \\frac{2}{b - a} \\cdot (f(b) - f(a))\n    = \\frac{2}{b - a} \\cdot (b - a) = 2.\\qedhere\n  \\]\n\\end{soln}"
   ]
 }
-

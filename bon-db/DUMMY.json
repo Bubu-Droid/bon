@@ -15,9 +15,10 @@
   ],
   "date": "2025-05-29",
   "hardness": "hard",
-  "problem": "\\begin{problem*}\n  Find the value of $1 + 1$.\n\\end{problem*}",
+  "problem": "\\begin{problem*}{}{}\n  Find the value of $1 + 1$.\n\\end{problem*}",
   "solution": [
     "\\begin{soln}\n  Using basic arithmetic, we find that the answer is $2$.\n\\end{soln}",
     "\\begin{soln}\n  Using Ohio algebra, the answer turns out to be $2$.\n\\end{soln}"
   ]
 }
+
