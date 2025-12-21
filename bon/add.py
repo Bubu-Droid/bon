@@ -25,7 +25,7 @@ from .rc import (
 def main(category: str) -> None:
     if category not in CATEGORY_LIST:
         print(f"The category {category} is not a valid one!")
-        print(f"Choose one among these: {', '.join(CATEGORY_LIST.keys())}")
+        print(f"Choose one among these: {', '.join(CATEGORY_LIST.keys())}.")
         return
 
     puid = get_new_puid(Path(HOME) / MODULE_NAME / DB_NAME / DB_LIST_FILE, PUID_LEN)
