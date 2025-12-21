@@ -13,7 +13,7 @@
 \section*{$puid}
 
 %---%
-\begin{problem*}
+\begin{problem*}{}{}
 
 \end{problem*}
 %---%
