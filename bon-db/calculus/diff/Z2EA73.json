@@ -1,18 +1,19 @@
 {
-  "desc": "",
+  "desc": "f(f(x))=f'(x) and f(x)>0",
   "puid": "Z2EA73",
-  "source": {
-    "IMC 2002 D1 P2": "https://aops.com/community/c7h55147p342852"
-  },
+  "source": [
+    {
+      "IMC 2002 D1 P2": "https://aops.com/community/c7h55147p342852"
+    }
+  ],
   "tags": [
     "differentiability",
     "differentiation"
   ],
   "date": "2025-12-21",
-  "hardness": "",
+  "hardness": "medium",
   "problem": "\\begin{problem*}{}{}\n  Does there exist a continuously differentiable function\n  $f \\colon \\RR \\rightarrow \\RR$ such that for every\n  $x \\in \\RR$ we have $f(x) > 0$ and $f'(x) = f(f(x))$?\n\\end{problem*}",
   "solution": [
     "\\begin{soln}\n  For the sake of contradiction, assume such a\n  function exists. Note that as $f(x)$ is differentiable,\n  $f(f(x))$ is also differentiable and so is $f'(x)=f(f(x))$.\n\n  Note that $f'(x) = f(f(x)) > 0$ implies\n  $f$ is strictly increasing.\n  This along with $f > 0$ implies that\n  $\\lim_{x \\to -\\oo} f(x)$ exists.\n  (Details are left to the reader.)\n\n  Let $\\ell = \\lim_{x \\to -\\oo} f(x)$. By LMVT, there exists\n  $c_x \\in (x, x+1)$ such that\n  \\[\n    f'(c_x) = \\frac{f(x+1) - f(x)}{(x+1) - x} = f(x+1) - f(x)\n    \\qquad \\forall\\, x \\in \\RR\n  .\\]\n  Then note $\\lim_{x \\to -\\oo} c_x = -\\oo$. So,\n  \\[\n    \\lim_{x \\to -\\oo} f'(c_x) = \\ell - \\ell = 0\n  .\\]\n\n  Differentiating our original equation, we get\n  \\[\n    f''(x) = f'(f(x)) \\cdot f'(x) > 0\n  .\\]\n  Therefore $f'(x)$ is also strictly increasing. Recall that\n  we derived $f'(x)> 0$\n  for all $x\\in \\RR$. So, by an analogous logic,\n  $\\lim_{x \\to -\\oo} f'(x)$ also exists. Thus\n  \\[\n    \\lim_{x \\to -\\oo} f'(x) = \\lim_{x \\to -\\oo} f'(c_x) = 0\n  .\\]\n  Plugging this back into our original equation, we get\n  \\[\n    0 = \\lim_{x \\to -\\oo} f'(x) = \\lim_{x \\to -\\oo} f(f(x))\n    = f(\\lim_{x \\to -\\oo} f(x)) = f(\\ell)\n  \\] \n  which contradicts the fact that $f(x) > 0$ for all\n  $x \\in \\RR$.\n\n  Thus our initial claim must have been false and we are done.\n\\end{soln}"
   ]
 }
-
