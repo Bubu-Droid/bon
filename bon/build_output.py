@@ -3,8 +3,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from .config import HOME, MODULE_NAME, TEX_SEP, TMP_PATH
 from .preview import make_tex_code
-from .rc import HOME, MODULE_NAME, TEX_SEP, TMP_PATH
 
 root = Path(HOME) / MODULE_NAME
 tmp_dir = Path(TMP_PATH)

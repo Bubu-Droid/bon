@@ -3,8 +3,7 @@ from pathlib import Path
 from string import Template
 from subprocess import Popen
 
-from .puid import fetch_file
-from .rc import (
+from .config import (
     HOME,
     MODULE_NAME,
     PREVIEW_TEMP,
@@ -13,6 +12,7 @@ from .rc import (
     TMP_FILE_NAME,
     TMP_PATH,
 )
+from .puid import fetch_file
 
 
 def make_tex_code(db_content: dict, puid: str, tex_sep: str) -> str:

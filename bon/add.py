@@ -5,8 +5,7 @@ from string import Template
 from subprocess import Popen, run
 
 from . import watcher
-from .puid import get_new_puid
-from .rc import (
+from .config import (
     ADD_TEMP,
     CATEGORY_LIST,
     DB_FILE_EXT,
@@ -20,6 +19,7 @@ from .rc import (
     TMP_FILE_NAME,
     TMP_PATH,
 )
+from .puid import get_new_puid
 
 
 def main(category: str) -> None:
@@ -49,7 +49,7 @@ def main(category: str) -> None:
     new_entry = {
         "desc": "",
         "puid": puid,
-        "source": {},
+        "source": [],
         "tags": [],
         "date": date_format,
         "hardness": "",

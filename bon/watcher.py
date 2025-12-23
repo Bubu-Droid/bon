@@ -5,7 +5,7 @@ from watchdog.events import DirModifiedEvent, FileModifiedEvent, FileSystemEvent
 from watchdog.observers import Observer
 from watchdog.observers.api import BaseObserver
 
-from .rc import TEX_SEP
+from .config import TEX_SEP
 
 
 class TexChangeHandler(FileSystemEventHandler):

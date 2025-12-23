@@ -22,6 +22,9 @@ CATEGORY_LIST = {
     "int": "calculus/int/",
     "geo": "geo/",
     "alg": "alg/",
+    "fe": "alg/fe/",
+    "poly": "alg/poly/",
+    "ineq": "alg/ineq/",
     "nt": "nt/",
     "combi": "combi/",
 }

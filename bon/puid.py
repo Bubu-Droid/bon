@@ -5,7 +5,7 @@ import string
 from datetime import datetime
 from pathlib import Path
 
-from .rc import DB_FILE_EXT, DB_NAME, HOME, MODULE_NAME
+from .config import DB_FILE_EXT, DB_NAME, HOME, MODULE_NAME
 
 letters = []
 letters.extend(i for i in string.ascii_uppercase)

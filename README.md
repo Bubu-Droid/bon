@@ -54,7 +54,7 @@ search functionality later on.
 
 1. Almost all of the
    relevant configuration variables
-   can be found in [rc.py](bon/rc.py)
+   can be found in [config.py](bon/config.py)
    The LaTeX templates that
    are used while adding, editing,
    or previewing can be found in the
