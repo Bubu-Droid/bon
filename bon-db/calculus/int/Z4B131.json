@@ -1,0 +1,19 @@
+{
+  "desc": "int_1^x floor(t)(floor(t)+1)f(t)=2sum_1^floor(x) i int_i^x f(t)",
+  "puid": "Z4B131",
+  "source": [
+    {
+      "ISI B.Stat. 2007 P3": "https://aops.com/community/c7h468432p2622558"
+    }
+  ],
+  "tags": [
+    "sumswap"
+  ],
+  "date": "2025-12-23",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $f(u)$ be a continuous function and,\n  for any real number $u$, let $\\floor{u}$ denote the\n  greatest integer less than or equal to $u$.\n  Show that for any $x>1$,\n  \\[\n    \\int_{1}^{x} \\floor{u}(\\floor{u}+1)f(u)\\mathrm{d}u\n    = 2\\sum_{i=1}^{\\floor{x}} i \\int_{i}^{x} f(u)\\mathrm{d}u\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Follow this calculations below:\n  \\begin{align*}\n    &\\int_{1}^{x} \\floor{t}(\\floor{t}+1)f(t)\\mathrm{d}t \\\\\n    &= \\int_{1}^{\\floor{x}} \\floor{t}\n    (\\floor{t}+1)f(t)\\mathrm{d}t\n    + \\int_{\\floor{x}}^{x} \\floor{t}\n    (\\floor{t}+1)f(t)\\mathrm{d}t \\\\\n    &= \\sum_{i=1}^{\\floor{x}-1} \\int_{i}^{i+1}\n    \\floor{t}(\\floor{t}+1)f(t)\\mathrm{d}t\n    + \\floor{x}(\\floor{x}+1)\n    \\int_{\\floor{x}}^{x} f(t)\\mathrm{d}t \\\\\n    &= \\sum_{i=1}^{\\floor{x}-1} i(i+1) \\int_{i}^{i+1}\n    f(t)\\mathrm{d}t + \\floor{x}(\\floor{x}+1)\n    \\int_{\\floor{x}}^{x} f(t)\\mathrm{d}t \\\\\n    &= 2 \\sum_{i=1}^{\\floor{x}-1} \\sum_{j=1}^{i}\n    j \\int_{i}^{i+1} f(t)\\mathrm{d}t\n    + \\floor{x}(\\floor{x}+1)\\int_{\\floor{x}}^{x}\n    f(t)\\mathrm{d}t \\\\\n    &= 2\\sum_{j=1}^{\\floor{x}-1} \\sum_{i=j}^{\\floor{x}-1}\n    j \\int_{i}^{i+1} f(t)\\mathrm{d}t+\\floor{x}\n    (\\floor{x}+1) \\int_{\\floor{x}}^{x} f(t)\\mathrm{d}t \\\\\n    &= 2\\sum_{j=1}^{\\floor{x}-1}\n    j \\int_{j}^{\\floor{x}} f(t)\\mathrm{d}t\n    + \\floor{x}(\\floor{x}+1) \\int_{\\floor{x}}^{x}\n    f(t)\\mathrm{d}t \\\\\n    &= 2 \\left(\\sum_{j=1}^{\\floor{x}-1}\n    j \\int_{j}^{\\floor{x}} f(t)\\mathrm{d}t\n    + j \\int_{\\floor{x}}^{x} f(t)\\mathrm{d}t\\right)\n    + (\\floor{x}(\\floor{x}+1)-(\\floor{x}-1)\\floor{x})\n    \\int_{\\floor{x}}^{x} f(t)\\mathrm{d}t \\\\\n    &= 2 \\sum_{j=1}^{\\floor{x}-1} j \\int_{j}^{x}\n    f(t)\\mathrm{d}t + \\left(\\int_{\\floor{x}}^{x} f(t)\n    \\mathrm{d}t\\right) \\cdot 2 \\floor{x} \\\\\n    &= 2 \\sum_{j=1}^{\\floor{x}} j \\int_{j}^{x}\n    f(t)\\mathrm{d}t\n  .\\qedhere\\end{align*}\n\n\\end{soln}"
+  ]
+}
+
