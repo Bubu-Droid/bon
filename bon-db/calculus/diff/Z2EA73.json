@@ -6,10 +6,7 @@
       "IMC 2002 D1 P2": "https://aops.com/community/c7h55147p342852"
     }
   ],
-  "tags": [
-    "differentiability",
-    "differentiation"
-  ],
+  "tags": [],
   "date": "2025-12-21",
   "hardness": "medium",
   "problem": "\\begin{problem*}{}{}\n  Does there exist a continuously differentiable function\n  $f \\colon \\RR \\rightarrow \\RR$ such that for every\n  $x \\in \\RR$ we have $f(x) > 0$ and $f'(x) = f(f(x))$?\n\\end{problem*}",

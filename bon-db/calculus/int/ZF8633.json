@@ -1,0 +1,19 @@
+{
+  "desc": "f(x)f(1-x)=1 prove int_0^1 f(x)>=1",
+  "puid": "ZF8633",
+  "source": [
+    {
+      "IMC 2022 D1 P1": "https://aops.com/community/c7h2899750p25826502"
+    }
+  ],
+  "tags": [
+    "am-gm",
+    "kings"
+  ],
+  "date": "2025-12-23",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $f: [0,1] \\to (0, \\infty)$ be an integrable function\n  such that $f(x)f(1-x) = 1$ for all $x\\in [0,1]$.\n  Prove that $\\int_0^1f(x)\\mathrm dx \\geq 1$.\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{Levieee}{25}{https://aops.com/community/c7h2899750p33614129}\n\\begin{soln}\n  By the Cauchy-Schwarz inequality:\n  \\[\n    \\int_0^1 f(x)\\mathrm{d}x \\int_0^1 f(1-x)\\mathrm{d}x\n    \\geq \\left( \\int_0^1 \\sqrt{f(x)f(1-x)} \\mathrm dx \\right)^2\n  .\\]\n  Since\n  \\[\n    \\int_0^1 \\sqrt{f(x)f(1-x)} \\mathrm dx\n    = \\int_0^1 1 \\mathrm dx = 1\n  ,\\]\n  we have\n  \\[\n    \\int_0^1 f(x)\\mathrm{d}x \\int_0^1 f(1-x)\\mathrm{d}x \\geq 1\n  .\\]\n  By King's rule:\n  \\[\n    \\int_0^1 f(x)\\mathrm{d}x \\int_0^1 f(1-x)\\mathrm{d}x\n    = \\int_0^1 f(x)\\mathrm{d}x \\int_0^1 f(x)\\mathrm{d}x\n    = \\left( \\int_0^1 f(x) \\mathrm dx \\right)^2\n  .\\]\n  Thus:\n  \\[\n    \\left( \\int_0^1 f(x) \\mathrm dx \\right)^2 \\geq 1\n  .\\]\n  Taking the square root:\n  \\[\n    \\int_0^1 f(x) \\mathrm dx \\geq 1.\\qedhere\n  \\]\n\\end{soln}"
+  ]
+}

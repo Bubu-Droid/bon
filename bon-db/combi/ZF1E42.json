@@ -1,0 +1,18 @@
+{
+  "desc": "ab+1, bc+1, ca+1 are factorials find (a,b,c)",
+  "puid": "ZF1E42",
+  "source": [
+    {
+      "JBMOSL 2021 N1": "https://aops.com/community/c6h2876360p25558836"
+    }
+  ],
+  "tags": [
+    "tricky"
+  ],
+  "date": "2025-12-23",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Suppose $a$, $b$, and $c$ are natural numbers such that\n  $ab+1$, $bc+1$ and $ca+1$ are factorials of positive integers.\n  Find all possible triplets $(a,b,c)$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Let $ab+1=p!,\\ bc+1=q!,\\ ca+1=r!$.\n\n  If $\\min\\{p,q,r\\}\\ge 3$, then $ab\\equiv -1$,\n  $bc\\equiv -1$, $ca\\equiv -1$ modulo $3$.\n  Multiplying these three, we get\n  \\[\n    (abc)^2\\equiv -1 \\pmod 3,\n  \\]\n  which is not possible as perfect squares are either\n  $0$ or $1$ modulo $3$.\n\n  So $\\min\\{p,q,r\\}\\le 2$.\n  WLOG assume $p$ is the minimum.\n  As $p=ab+1\\ge 2$, we have $p\\ge 2$.\n  This forces $p=2$, which further forces $a=b=1$.\n  So $c=q!-1=r!-1$.\n\n  It is easy to see that all triplets of the form\n  $(1,1,n!-1)$, $n\\ge 2$, and their permutations work.\n\\end{soln}"
+  ]
+}

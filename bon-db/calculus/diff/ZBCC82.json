@@ -6,14 +6,11 @@
       "Putnam 2010 A2": "https://aops.com/community/c7h381033p2109503"
     }
   ],
-  "tags": [
-    "differentiability",
-    "differentiation"
-  ],
+  "tags": [],
   "date": "2025-07-23",
   "hardness": "medium",
   "problem": "\\begin{problem*}{}{}\n  Let $f\\colon \\mathbb{R} \\to \\mathbb{R}$ be a differentiable\n  function which satisfies\n  \\[\n    f'(x+n) = \\frac{f(x+n) - f(x)}{n}\n    \\quad \\forall\\, n \\in \\mathbb{N}.\n  \\]\n  Find all such possible functions $f(x)$.\n\\end{problem*}",
   "solution": [
-    "\\begin{soln}\n  Clearly $f(x)$ is infinitely differentiable.\n  Putting $n = 1$ in our primary equation,\n  we get\n  \\[\n    f'(x+1) = f(x+1) - f(x).\n  \\]\n  By substituting $x \\mapsto x + 1$, we get\n  \\[\n    f'(x+2) = f(x+2) - f(x+1).\n  \\]\n  Adding these two equations and then\n  dividing by $2$ gives\n  \\[\n    \\frac{f'(x + 1) + f'(x + 2)}{2}\n    = \\frac{f(x + 2) - f(x)}{2}.\n  \\]\n  Now, we put $n = 2$ in our primary equation to get\n  \\[\n    f'(x + 2) = \\frac{f(x + 2) - f(x)}{2}.\n  \\]\n  Substituting this into our result gives\n  \\[\n  \\frac{f'(x + 1) + f'(x + 2)}{2} = f'(x + 2)\n  \\implies f'(x + 1) = f'(x + 2).\n  \\]\n  Then note that $f'(x) = f'(x + 1) = \\dots = f'(x + n)$.\n\n  To finish, note that differentiating the\n  primary equation gives\n  \\[\n    f''(x + n)\n    = \\frac{f'(x+n) - f'(x)}{n} = 0.\n  \\]\n  Substituting $x \\mapsto x - n$ implies $f''(x) = 0$.\n  Since $f(x)$ is infinitely differentiable, $f''(x)$ is\n  continuous. Integrating $f''(x) = 0$ twice gives\n  $f(x) = ax + b$.\n\n  Clearly a linear function satisfies our original\n  equation and we are done.\n\\end{soln}"
+    "\\begin{soln}\n  Clearly $f(x)$ is infinitely differentiable.\n  Putting $n = 1$ in our primary equation,\n  we get\n  \\[\n    f'(x+1) = f(x+1) - f(x).\n  \\]\n  By substituting $x \\mapsto x + 1$, we get\n  \\[\n    f'(x+2) = f(x+2) - f(x+1).\n  \\]\n  Adding these two equations and then\n  dividing by $2$ gives\n  \\[\n    \\frac{f'(x + 1) + f'(x + 2)}{2}\n    = \\frac{f(x + 2) - f(x)}{2}.\n  \\]\n  Now, we put $n = 2$ in our primary equation to get\n  \\[\n    f'(x + 2) = \\frac{f(x + 2) - f(x)}{2}.\n  \\]\n  Substituting this into our result gives\n  \\[\n  \\frac{f'(x + 1) + f'(x + 2)}{2} = f'(x + 2)\n  \\implies f'(x + 1) = f'(x + 2).\n  \\]\n  Then note that $f'(x) = f'(x + 1) = \\cdots = f'(x + n)$.\n\n  To finish, note that differentiating the\n  primary equation gives\n  \\[\n    f''(x + n)\n    = \\frac{f'(x+n) - f'(x)}{n} = 0.\n  \\]\n  Substituting $x \\mapsto x - n$ implies $f''(x) = 0$.\n  Since $f(x)$ is infinitely differentiable, $f''(x)$ is\n  continuous. Integrating $f''(x) = 0$ twice gives\n  $f(x) = ax + b$.\n\n  Clearly a linear function satisfies our original\n  equation and we are done.\n\\end{soln}"
   ]
 }
