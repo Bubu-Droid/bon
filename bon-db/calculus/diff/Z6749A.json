@@ -1,0 +1,19 @@
+{
+  "desc": "f(a)=a and f(b)=b prove f'(c)f'(d)=1",
+  "puid": "Z6749A",
+  "source": [
+    {
+      "RMCS 43": "https://aops.com/community/c7h1958676p13538832"
+    }
+  ],
+  "tags": [
+    "mvt"
+  ],
+  "date": "2025-12-24",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $f:[a,b]\\to \\RR$ be a differentiable function with\n  $f(a)=b$ and $f(b)=a$.\n  Prove that there exist two distinct real numbers\n  $c$, $d\\in (a,b)$ such that $f'(c)f'(d)=1$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  If there exists $t\\in (a,b)$ such that $f(t)=t$, then\n  LMVT on $(a, t)$ and $(t, b)$ finishes.\n  Otherwise, assume that $f(x)\\neq x$ for all $x\\in (a,b)$.\n\n  Define $g(x)=f(f(x))-x$. Then $g(a)=g(b)=0$. Clearly\n  $g$ is differentiable and by LMVT, there exists\n  $c\\in (a,b)$ such that $g'(c)=0$. Note that\n  $g'(x) = f'(f(x)) \\cdot f'(x)$. Moreover,\n  since $f(x)\\neq x$ for all $x\\in (a,b)$, we get\n  $f(c)\\neq c$. Let $d = f(c)$. Then $g'(c)=0$ implies\n  $f'(c)\\cdot f'(d)=1$ as desired.\n\\end{soln}"
+  ]
+}
+

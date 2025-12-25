@@ -1,0 +1,19 @@
+{
+  "desc": "f(x)=ax+b or there exists t such that |f(1)-f(0)|<|f'(t)|",
+  "puid": "Z65DB6",
+  "source": [
+    {
+      "ISI 2023 P8": "https://aops.com/community/c7h3071898p27731751"
+    }
+  ],
+  "tags": [
+    "mvt"
+  ],
+  "date": "2025-12-25",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $f \\colon [0,1] \\to \\mathbb{R}$ be a continuous function\n  which is differentiable on $(0,1)$.\n  Prove that either $f(x) = ax + b$ for all $x \\in [0,1]$\n  for some constants $a$, $b \\in \\mathbb{R}$ or there exists\n  $t \\in (0,1)$ such that $|f(1) - f(0)| < |f'(t)|$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Suppose $|f(1)-f(0)| \\ge |f'(t)|$ for all $t\\in (0,1)$.\n  Then it suffices to show that $f$ is linear. Note that\n  $f$ satisfies the conditions if and only if $-f$ satisfies\n  them. So, WLOG assume that $f(0) < f(1)$.\n\n  Fix $t\\in (0,1)$ arbitrarily. By LMVT on $(0,t)$, we know\n  there exists $c_1\\in (0,t)$ such that\n  \\[\n    \\frac{f(t)-f(0)}{t-0} = f'(c_1)\n  \\]\n  which implies\n  \\[\n    \\left|\\frac{f(t)-f(0)}{t}\\right|\n    = |f'(c_1)| \\le |f(1)-f(0)|\n  \\]\n  and hence\n  \\[\n    |f(t)-f(0)| \\le |f(1)-f(0)|t\n  .\\]\n  Similarly, by LMVT on $(t, 1)$, we get\n  \\[\n    |f(1)-f(t)| \\le |f(1)-f(0)| (1-t)\n  .\\]\n  Adding these two gives\n  \\begin{align*}\n    |f(1)-f(t)| + |f(t)-f(0)| &\\le |f(1)-f(0)| \\\\\n    &= |(f(1)-f(t)) - (f(t)-f(0))| \\\\\n    &\\le |f(1)-f(t)| + |f(t)-f(0)|\n  .\\end{align*}\n  \n  Due to the equality condition of the triangle equality,\n  it suggests that $f(t)\\in\n  (\\min\\left\\{ f(0), f(1)) \\right\\},\n  \\max\\left\\{ f(0),f(1) \\right\\}) = (f(0),f(1))$.\n  Furthermore, the equality condition in the final inequality\n  forces the equality to hold in all the preceding inequalities\n  which implies\n  \\[\n    \\left|\\frac{f(t)-f(0)}{t}\\right|\n    = |f(1)-f(0)|\n  \\]\n  that is\n  \\[\n    f(t)-f(0) = (f(1)-f(0))t\n  .\\]\n  This shows that $f$ is linear on $(0,1)$ and hence,\n  by continuity, it is linear on $[0,1]$, as desired.\n\\end{soln}"
+  ]
+}
+

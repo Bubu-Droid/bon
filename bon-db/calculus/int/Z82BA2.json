@@ -1,0 +1,21 @@
+{
+  "desc": "int_0^1 f(t)=int_0^1 tf(t) show there exists d such that f(d)=int_0^d f(t)",
+  "puid": "Z82BA2",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3740290p36792271"
+    }
+  ],
+  "tags": [
+    "mvt",
+    "mvtconstruct",
+    "doublemvt"
+  ],
+  "date": "2025-12-25",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}{}{}\n  Let $f\\colon [0,1]\\to \\RR$ be a continuous function\n  satisfying\n  \\[\n    \\int_{0}^{1} f(t)\\mathrm{d}t=\\int_{0}^{1} tf(t)\\mathrm{d}t\n  .\\]\n  Prove that there exists $d\\in (0,1)$ such that\n  $f(d)=\\int_{0}^{d} f(t)\\mathrm{d}t$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Define $g\\colon [0,1] \\to \\RR$ such that\n  \\[\n    g(x) = x\\int_{0}^{x} f(t)\\mathrm{d}t\n    -\\int_{0}^{x} tf(t)\\mathrm{d}t\n  .\\]\n  Since $f$ is continuous on $[0,1]$, $g$ is\n  differentiable on $[0,1]$ by FTC. \n  Note that $g(0)=g(1)=0$. So, by Rolle's theorem,\n  there exists $c\\in (0,1)$ such that $g'(c)=0$.\n  Computing $g'$, we get\n  \\[\n    g'(x)=\\int_{0}^{x} f(t)\\mathrm{d}t\n  \\]\n  by using FTC. So $g'(c)=0$ implies\n  $\\int_{0}^{c} f(t)\\mathrm{d}t=0$.\n  \n  Now define $h\\colon [0,c]\\to \\RR$ such that\n  \\[\n    h(x)=e^{-x}\\cdot \\int_{0}^{x} f(t)\\mathrm{d}t\n  .\\]\n  Similarly, due to FTC, $h$ is differentiable on $[0,c]$.\n  Also, $h(0)=h(c)=0$ and hence, by Rolle's theorem,\n  there exists $d\\in (0,c)$ such that $h'(d)=0$.\n  Computing $h'$, we get\n  \\[\n    h'(x) = e^{-x}\\cdot (f(x)-\\int_{0}^{x} f(t)\\mathrm{d}t)\n  .\\]\n  Thus $h'(d)=0$ implies $f(d)=\\int_{0}^{d} f(t)\\mathrm{d}t$,\n  as desired.\n\\end{soln}"
+  ]
+}
+

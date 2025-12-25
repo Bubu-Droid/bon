@@ -1,0 +1,20 @@
+{
+  "desc": "k|2(a_1+...+a_k) find permutations (a_1,...,a_n) of (1,...,n)",
+  "puid": "Z18EFC",
+  "source": [
+    {
+      "IMOSL 2008 C2": "https://aops.com/community/c6h271833p1472110"
+    }
+  ],
+  "tags": [
+    "nt",
+    "counting"
+  ],
+  "date": "2025-12-25",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $n \\in \\mathbb N$ and $A_n$ set of all permutations\n  $(a_1, \\ldots, a_n)$ of the set $\\{1, 2, \\ldots , n\\}$\n  for which\n  \\[\n    k\\mid 2(a_1 + \\cdots+ a_k) \\quad \\forall \\,1 \\leq k \\leq n\n  .\\]\n  Find the number of elements of the set $A_n$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  We can check $n=1$, $2$, $3$ by hand.\n  This gives $|A_1| = 1$, $|A_2| = 2$ and $|A_3| = 6$.\n  Now we proceed by induction.\n\n  For the base case, assume that we know the value of\n  $|A_n|$ for some $n\\ge 3$, and so,\n  we want to find the value of $|A_{n+1}|$.\n  We divide this into cases.\n\n  \\begin{enumerate}[(i)]\n    \\ii \\textbf{$n$ is odd:} In this case,\n      if the last digit of the tuple is $n+1$ itself,\n      then we simply get $|A_n|$ cases by using induction\n      since the sum of all the numbers is clearly\n      divisible by $n+1$.\n      Now, suppose the last digit (say $\\ell$)\n      is not $n+1$.\n      Then note that by setting $k=n$, we get,\n      \\[\n        n\\mid 2\\left(\\frac{(n+1)(n+2)}{2} - \\ell\\right)\n        \\equiv 2-2k = 2(1-\\ell)\n      .\\]\n      Now since $n$ is odd, we can simply ignore the $2$\n      from which we get $\\ell \\equiv 1\\pmod{n}$.\n      This\n      means $\\ell =1$. So the first $n$ elements of the\n      tuple are just a rearrangement of\n      $(2,3,\\ldots , n+1)$.\n      Now note that even if we decrease all the\n      $(a_1,a_2,\\ldots , a_n)$ by $1$,\n      the problem condition stays equivalent due to\n      divisibility. Thus we can decrease all the first\n      $n$ elements by $1$ which gives us a rearrangement of\n      $(1,2,\\ldots ,n)$.\n      The number of such tuples is just $|A_n|$ again.\n      So in total, we get $|A_{n+1}| = 2|A_n|$ when $n$ is odd.\n\n    \\ii \\textbf{$n$ is odd:} In this case,\n      if the final digit is $n+1$, we get $|A_n|$\n      tuples in a similar fashion as seen previously.\n\n      Otherwise, similarly, we again get $n \\mid 2(1-\\ell)$.\n      But this time, we cannot ignore the $2$ anymore.\n      So in this case, we get $k\\equiv 1\\pmod{\\frac{n}{2}}$.\n\n      Now if the final element is $1$,\n      we again get that there are $|A_n|$ such tuples.\n\n      The only other case that remains is when the\n      final element is $\\frac{n}{2} + 1 = \\frac{n+2}{2}$.\n      Let the second last element be $g$.\n      Now we set $k=n-1$ to get,\n      \\[\n        n-1\\mid 2\\left(\\frac{(n+1)(n+2)}{2}\n        - \\left(\\frac{n+2}{2}\\right)\n        - g\\right) \\equiv 2\\cdot 3 - 3 - 2g = 3 - 2g\n      .\\]\n      This gives us that $2g\\equiv 3 \\pmod{n-1}$.\n      Thus in this case we have $2g = (n-1)x + 3$\n      for some integer $x$. Due to parity,\n      this forces $x$ to be odd. Now if $x\\ge 3$,\n      then $g = \\frac{(n-1)x+3}{2}\\ge\n      \\frac{(n-1)\\cdot 3 + 3}{2}=\\frac{3n}{2}$.\n      But $\\frac{3n}{2}>n+1$ for all $n>2$\n      which gives a contradiction.\n      Thus we now get $x=1$ which gives $g=\\frac{n+2}{2}$.\n      But this gives a further contradiction as our\n      final element was $\\frac{n+2}{2}$ itself.\n      Thus there are no possible tuples when the\n      final element is $\\frac{n+2}{2}$.\n\n      Thus, in total, this case also gives us\n      $|A_{n+1}|=2|A_n|$ when $n$ is even.\n  \\end{enumerate}\n\n  Combining these two cases,\n  we get that $|A_{n+1}|=2|A_n|$ for all $n\\ge 3$.\n  Thus our final answer looks like $|A_1| = 1$,\n  $|A_2| = 2$ and $|A_n| = 3\\cdot 2^{n-2}$\n  for all $n \\ge 3$.\n\\end{soln}"
+  ]
+}
+

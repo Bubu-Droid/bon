@@ -1,0 +1,20 @@
+{
+  "desc": "find x such that 6^x+1=8^x-27^{x-1}",
+  "puid": "ZF199C",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3740279p36792216"
+    }
+  ],
+  "tags": [
+    "factorization",
+    "funcanalysis"
+  ],
+  "date": "2025-12-25",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}{}{}\n  Find all values of $x$ for which\n  \\[\n    6^x + 1 = 8^x - 27^{x-1}\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Let $a=3^x$ and $b=6^x$. Then our equation changes to\n  \\[\n    b+1 = \\frac{b^{3}}{a^{3}}-\\left(\\frac{a}{3}\\right)^{3}\n  .\\]\n  This factorizes cleanly as\n  \\[\n    \\left(\\frac{b}{a}\\right)^3\n    + \\left(-\\frac{a}{3}\\right)^3 + (-1)^3\n    -3\\left(\\frac{b}{a}\\right)\\left(-\\frac{a}{3}\\right)(-1)=0\n  \\]\n  which implies\n  \\[\n    \\left(\\frac{b}{a}-\\frac{a}{3}-1\\right)\n    \\left(\\left(\\frac{b}{a}+\\frac{a}{3}\\right)^2\n    +\\left(1-\\frac{a}{3}\\right)^2\n    +\\left(\\frac{b}{a}+1\\right)^2\\right)=0\n  .\\]\n  Therefore, either $\\frac{b}{a}-\\frac{a}{3}-1=0$ or\n  $\\frac{b}{a}=-\\frac{a}{3}=-1$.\n\n  The second condition clearly has no solution. We focus on the\n  first condition. Note that\n  \\[\n    \\frac{b}{a}-\\frac{a}{3}-1=0\n    \\implies 2^{x}-3^{x-1}-1=0\n  .\\]\n  Define $g(x)=2^{x}-3^{x-1}-1$. It is easy to check that\n  $g(x)$ attains a maxima at\n  $x_0=\\log_{2/3}\\left(\\frac{1}{3}\\log_2 3\\right)$\n  and that $g(x)$ is strictly increasing on\n  $(-\\oo,x_0)$ and strictly decreasing on\n  $(x_0,\\oo)$. We also get that\n  \\[\n    \\lim_{x \\to -\\oo} g(x)=-1,\\quad\n    \\lim_{x \\to \\oo} g(x)=-\\oo,\\quad\n    g(x_0)>0\n  \\]\n  which implies, by IVT and strict monotonicity,\n  that $g$ has at exactly two roots,\n  one in $(-\\oo,x_0)$ and the other in $(x_0,\\oo)$.\n\n  Plugging $x=1$ and $x=2$, we get that both $1$ and\n  $2$ are roots of $g$ which implies $x=1$ and\n  $x=2$ are the only possible solutions of our\n  primary equation.\n\\end{soln}"
+  ]
+}
+
