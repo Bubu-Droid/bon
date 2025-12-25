@@ -1,5 +1,5 @@
 {
-  "desc": "show -2<=cos theta(sin theta+sqrt(sin^2 theta+3))<=2",
+  "desc": "show -2<=cos theta(sin theta+sqrt{sin^2 theta+3})<=2",
   "puid": "Z9D631",
   "source": [
     {
@@ -17,4 +17,3 @@
     "\\aopssoln{mcrasher}{2}{https://aops.com/community/c6h474445p2658428}\n\n\\begin{soln}\n  From Cauchy–Schwarz inequality,\n  \\begin{align*}\n    \\left(\\cos\n    \\theta\\left(\\sin \\theta + \\sqrt{\\sin ^2 \\theta +3}\\right)\n    \\right)^2\n    &=\\left(\\cos \\theta \\sin \\theta + \\cos \\theta \\sqrt{\n      \\sin^2\\theta + 3\n    }\\right)^2 \\\\\n    &\\leq (\\sin^2 \\theta+\\cos^2 \\theta)\n    \\cdot (\\cos^2 \\theta+\\sin^2 \\theta +3) \\\\\n    &=4\n  \\end{align*}\n  which implies\n  $-2 \\le \\cos \\theta\\left(\\sin \\theta\n  + \\sqrt{\\sin ^2 \\theta +3}\\right) \\le 2$, as desired.\n\\end{soln}"
   ]
 }
-

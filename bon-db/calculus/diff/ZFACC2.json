@@ -1,0 +1,22 @@
+{
+  "desc": "f(0)=0 and f' increasing prove f(x)/x is increasing",
+  "puid": "ZFACC2",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h2971398p26629798"
+    }
+  ],
+  "tags": [
+    "convexity",
+    "mvt"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Suppose that $f\\colon[0, \\oo) \\to \\mathbb{R}$\n  is continuous, $f'$ exists on $(0, \\oo)$, $f(0)=0$,\n  and $f'$ is monotonically increasing. Show that\n  \\[\n    g(x)= \\frac{f(x)}{x}\n  \\]\n  is monotonically increasing on $(0, \\oo)$\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Clearly $g(x)$ is differentiable on $(0,\\oo)$.\n  Note that\n  \\[\n    g'(x) = \\frac{f'(x)x - f(x)}{x^2}\n  .\\]\n  It suffices to show that $g'(x) \\ge 0$ which is equivalent\n  to showing $f'(x) \\ge \\frac{f(x)}{x}$. But note that by LMVT,\n  \\[\n    \\frac{f(x)}{x}=\\frac{f(x)-f(0)}{x-0}=f'(c_x) \\le f'(x)\n  \\]\n  where $c_x \\in (0,x)$ and the last inequality follows by\n  monotonicity of $f'$. This finishes our proof.\n\\end{soln}",
+    "\\begin{soln}\n  Fix $0<x<y$ arbitrarily. By LMVT on $(0,x)$, we get\n  \\[\n    \\frac{f(x)-f(0)}{x-0}=f'(c_x)\n  \\]\n  for some $c_x \\in (0,x)$. Again, by LMVT on $(x,y)$, we get\n  \\[\n    \\frac{f(y)-f(x)}{y-x}=f'(d_{x,y})\n  \\]\n  for some $d_{x,y}\\in (x,y)$. Now, as $c_x < x < d_{x,y}$,\n  we get $f'(c_x) \\le f'(d_{x,y})$ which implies\n  \\[\n    \\frac{f(x)-f(0)}{x-0} \\le \\frac{f(y)-f(x)}{y-x}\n  .\\]\n  By cross-multiplying terms and simplifying, we get\n  \\[\n    \\frac{f(y)}{y} \\ge \\frac{f(x)}{x}\n  \\]\n  which finishes our proof.\n\\end{soln}",
+    "\\begin{soln}\n  From the condition that $f'$ is monotonically increasing,\n  it is straightforward to prove that $f$ is convex. (Left\n  as an exercise to the reader.)\n\n  Fix $0 < x < y$ arbitrarily. By convexity,\n  \\[\n    f\\left(\\left(\\frac{x}{y}\\right)\\cdot y\n    +\\left(1-\\frac{x}{y}\\right)\\cdot 0\\right)\n    \\le \\frac{x}{y}\\cdot f(y)\n    + \\left(1 - \\frac{x}{y}\\right)f(0)\n  \\]\n  which implies\n  \\[\n    \\frac{f(x)}{x}\\le \\frac{f(y)}{y},\n  \\]\n  as desired.\n\\end{soln}"
+  ]
+}
+

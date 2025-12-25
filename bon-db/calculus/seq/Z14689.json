@@ -1,0 +1,20 @@
+{
+  "desc": "x_{n+1}=x_n(1-x_n) find lim_{n->infty} nx_n",
+  "puid": "Z14689",
+  "source": [
+    {
+      "Putnam 1966 A3": "https://aops.com/community/c7h2817872p24890570"
+    }
+  ],
+  "tags": [
+    "stolz",
+    "cesaro"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $0<x_1<1$ and $x_{n+1}=x_n(1-x_n)$,\n  $n=1$, $2$, $3$, \\ldots.\n  Show that\n  \\[\n    \\lim_{n \\to \\infty} nx_n=1\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{Tintarn}{2}{https://aops.com/community/c7h2817872p24890588}\n\n\\begin{soln}\n  First of all, it is clear that $x_n \\in (0,1)$\n  for all $n$ and hence $x_{n+1}<x_n$\n  and hence $x_n$ converges and hence\n  $\\lim_{n \\to \\infty} x_n=0$.\n  Next, by Stolz-Cesaro, using\n  $\\frac{1}{x_{n+1}}=\\frac{1}{x_n}+\\frac{1}{1-x_n}$, we have\n  \\[\n    \\lim_{n \\to \\infty} \\frac{1}{nx_n}\n    =\\lim_{n \\to \\infty} \\left(\\frac{1}{x_{n+1}}\n    -\\frac{1}{x_n}\\right)\n    =\\lim_{n \\to \\infty} \\frac{1}{1-x_n}=1\n  .\\qedhere\\]\n\\end{soln}"
+  ]
+}
+
