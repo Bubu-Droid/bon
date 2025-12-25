@@ -1,0 +1,21 @@
+{
+  "desc": "find lim_{n->infty} (int_0^1 f(x)^n)^{1/n}",
+  "puid": "Z768E4",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3740390p36793396"
+    }
+  ],
+  "tags": [
+    "limfunc",
+    "limsup",
+    "liminf",
+    "sandwich"
+  ],
+  "date": "2025-12-25",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $f\\colon [0,1]\\to \\RR^+$ be a continuous function. Find\n  \\[\n    \\lim_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n\\mathrm{d}x\\right)^{{1}/{n}}\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  As $f$ is continuous, by EVT, there exists $c\\in [0,1]$\n  such that $f(x)\\le f(c)$ for all $x\\in [0,1]$.\n  Therefore,\n  \\[\n    \\int_{0}^{1} f(x)^n \\mathrm{d}x\n    \\le \\int_{0}^{1} f(c)^{n} \\mathrm{d}x\n    = f(c)^{n}\n  \\]\n  which implies\n  \\[\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\le f(c)\n  .\\]\n  Now by\n  continuity of $f$ at $x=c$, we get that for all\n  $\\eps>0$ there exists $\\delta > 0$ such that\n  for all $x\\in [0,1]$,\n  \\[\n    |x-c| < \\delta \\implies |f(x)-f(c)| < \\eps,\n  \\]\n  that is, $f(x)\\in (f(c)-\\eps, f(c)+\\eps)$ for all\n  $x\\in (c-\\delta, c+\\delta)\\cap [0,1]$. Fix $\\eps>0$.\n  Let $\\mathcal{I}=(c-\\delta, c+\\delta)\\cap[0,1]$\n  and let $\\ell $ be the length of the interval\n  $\\mathcal{I}$.\n  Therefore,\n  \\[\n    \\int_{0}^{1} f(x)^n \\mathrm{d}x\n    \\ge \\int_{\\mathcal{I}} f(x)^n \\mathrm{d}x\n    \\ge \\int_{\\mathcal{I}} (f(c)-\\eps)^n \\mathrm{d}x\n    = (f(c)-\\eps)^n \\cdot \\ell\n  \\]\n  which implies\n  \\[\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\ge (f(c)-\\eps)\\cdot \\ell^{{1}/{n}}\n  .\\]\n  Clearly $\\left\\{ \\ell^{{1}/{n}} \\right\\}_{n \\ge 1}$ is\n  bounded below. Therefore,\n  \\[\n    \\left\\{ \n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\right\\}_{n \\ge 1}\n  \\]\n  is bounded both above and below.\n  This implies that both\n  \\[\n    \\liminf_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\quad\\text{and}\\quad\n    \\limsup_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n  \\]\n  exist.\n\n  Clearly $\\lim_{n \\to \\oo} (f(c)-\\eps)\\cdot \\ell^{{1}/{n}}\n  =f(c)-\\eps$.\n  Considering limit superior and limit inferior in the\n  following inequality:\n  \\[\n    (f(c)-\\eps)^{{1}/{n}}\\le\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\le f(c)\n  \\]\n  we get\n  \\[\n    f(c)-\\eps\\le\\liminf_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\le f(c)\n  \\]\n  and\n  \\[\n    f(c)-\\eps\\le\\limsup_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    \\le f(c)\n  \\]\n  for any arbitrary $\\eps>0$.\n  Considering small $\\eps$, we get\n  \\[\n    \\liminf_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    = \\limsup_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    = f(c)\n  \\]\n  which implies\n  \\[\n    \\limsup_{n \\to \\oo}\n    \\left(\\int_{0}^{1} f(x)^n \\mathrm{d}x\\right)^{{1}/{n}}\n    =f(c).\\qedhere\n  \\]\n\\end{soln}\n\n\\begin{remark*}{Motivation}{}\n  From where does one motivate the fact that the limit\n  should be the maximum value of the function? Well, if\n  this were a finite discrete sum instead of an integral,\n  that is,\n  \\[\n    \\left(\n    \\frac{a_1^n + a_2^n + \\cdots + a_{d}^n}{n}\n    \\right)^{{1}/{n}},\n  \\]\n  then the limit simply would've been $\\max_{i}a_i$.\n  (Left as an exercise to the reader.) Since an integral\n  is basically a continuous sum instead of a discrete one,\n  it suggests that the limit might be the\n  maximum/supremum\n  value that $f$ attains on it's entire domain.\n\\end{remark*}"
+  ]
+}

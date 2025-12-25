@@ -1,0 +1,12 @@
+{
+  "desc": "",
+  "puid": "Z1CB3F",
+  "source": [],
+  "tags": [],
+  "date": "2025-12-26",
+  "hardness": "",
+  "problem": "\\begin{problem*}{}{}\n  Let $f$ be a twice differentiable function on the\n  open interval $(-1,1)$ such that $f(0)=1$.\n  Suppose $f$ also satisfies $f(x) \\ge 0$,\n  $f'(x) \\le 0$, and $f''(x) \\le f(x)$, for all $x\\ge 0$.\n  Show that $f'(0) \\ge -\\sqrt2$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  \n\\end{soln}"
+  ]
+}
