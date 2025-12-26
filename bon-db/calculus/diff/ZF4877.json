@@ -1,0 +1,19 @@
+{
+  "desc": "find maximum value of |sin(x)+cos(x)+tan(x)+cot(x)+sec(x)+cosec(x)|",
+  "puid": "ZF4877",
+  "source": [
+    {
+      "Putnam 2003 A3": "https://aops.com/community/c7h413601p2325342"
+    }
+  ],
+  "tags": [
+    "tricky",
+    "funcanalysis"
+  ],
+  "date": "2025-12-26",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}{}{}\n  Find the minimum value of\n  \\[\n    |\\sin{x} + \\cos{x} + \\tan{x} + \\cot{x} + \\sec{x} + \\csc{x}|\n  \\]\n  for real numbers $x$.\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{Kent Merryfield}{2}{https://aops.com/community/c7h413601p2325429}\n\n\\begin{soln}\n  Let\n  $u = \\cos x + \\sin x = \\sqrt{2}\n  \\sin \\left(x + \\frac\\pi4\\right)$.\n\n  We will represent everything in terms of\n  $u$, which ranges over the interval\n  $\\left[-\\sqrt{2}, \\sqrt{2}\\right]$.\n\n  We note that\n  \\[\n    u^2 = \\sin^2x + 2 \\sin x \\cos x + \\cos^2x\n    = 1 + 2 \\sin x \\cos x,\n  \\]\n  so $\\sin x \\cos x = \\frac{u^2 - 1}2$. Then:\n  \\[\n    \\sin x + \\cos x = u.\n  \\]\n\n  \\[\n    \\tan x + \\cot x\n    = \\frac{\\sin^2x + \\cos^2x}{\\sin x \\cos x}\n    = \\frac2{u^2 - 1} .\n  \\]\n\n  \\[\n    \\sec x + \\csc x\n    = \\frac{\\cos x + \\sin x}{\\sin x \\cos x}\n    = \\frac{2u}{u^2 - 1} .\n  \\]\n\n  So the function we are trying to minimize is the\n  absolute value of\n  \\[\n    u + \\frac2{u^2 - 1} + \\frac{2u}{u^2 -1}\n  = \\frac{u^3 + u + 2}{u^2 - 1}\n  = \\frac{(u + 1)(u^2 - u + 2)}{(u + 1)(u - 1)}\n  = \\frac{u^2 - u + 2}{u - 1}.\n  \\]\n\n  This last identity holds except at the\n  removable singularities at $u = -1$\n  ($x = \\pi$ or $3\\pi/2$) and except for the poles at\n  $u = 1$ ($x = 0$ or $\\pi/2$). Near the removable\n  singularities, the absolute value of the function\n  is near $2$; near the poles it is large.\n\n  If $f(u) = \\frac{u^2 - u + 2}{u - 1}$\n  then $f'(u) = \\frac{-u^2 + 2u + 1}{(u - 1)^2}$.\n\n  For $|f|$ to have a minimum, either $f$ must have\n  a critical point or $f$ must be zero. But $f(u)$\n  is never zero, because $u^2 - u + 2$ is an irreducible\n  quadratic. Potential critical points happen at the\n  roots of $-u^2 + 2u + 1 = 0$, namely $u = 1 \\pm \\sqrt{2}$.\n  But the positive root lies outside the domain of $f$.\n\n  Hence our critical points happen when\n  $u = 1 - \\sqrt{2} $, which corresponds to values of\n  $x$ in the second and fourth quadrants.\n\n  The value of $f$ at that point is $1- 2\\sqrt{2}$, so\n  the absolute value is $2\\sqrt{2} - 1$, which is\n  smaller than $2$ (about $1.828.$) One last check\n  from the calculus point of view: what does $f(u)$\n  equal when $u$ is $\\pm \\sqrt{2}$?\n\n  This corresponds to $x = \\pi/4$ or $5\\pi/4$, and the\n  values of $f$ are $2 + 3\\sqrt{2}$ and $2 - 3\\sqrt{2}$,\n  both of which are bigger than $2$ in absolute value.\n\n  Thus, the minimum of the absolute value is\n  $2\\sqrt{2} - 1$, which happens twice in each period.\n\\end{soln}"
+  ]
+}

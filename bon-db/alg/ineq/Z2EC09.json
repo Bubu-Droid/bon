@@ -1,0 +1,18 @@
+{
+  "desc": "prove (a-1+1/b)(b-1+1/c)(c-1+1/a)<=1",
+  "puid": "Z2EC09",
+  "source": [
+    {
+      "IMOSL 2000 A1": "https://aops.com/community/c6h57603p354109"
+    }
+  ],
+  "tags": [
+    "substitution"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $a$, $b$, $c$ be positive real numbers such that\n  $abc=1$. Prove that,\n  \\[\n    \\left( a-1+\\frac{1}{b} \\right)\n    \\left( b-1+\\frac{1}{c} \\right) \\left( c-1+\n    \\frac{1}{a}\\right) \\le 1\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Substitute $a=\\frac{y}{z}$, $b=\\frac{z}{x}$, $c= \\frac{x}{y}$.\n\n  Then we have to prove that,\n  \\[\n    (x+y-z)(y+z-x)(z+x-y)\\le xyz\n  .\\]\n  \n  WLOG assume $x = \\max\\left\\{ x,y,z \\right\\}$. Then note that\n  $(x+y-z)$ and $(z+x-y)$ are both positive. If $(y+z-x)$ is\n  negative, we are clearly done.\n\n  Otherwise, $(y+z-x)$ is also positive. Then $x$, $y$, $z$ \n  are sides of a triangle. Let $p=x+y-z$, $q=y+z-x$, $r=z+x-y$.\n\n  Then note that the inequality that we have to prove changes\n  to,\n  \\[\n    \\left( \\frac{p+q}{2} \\right) \\left( \\frac{q+r}{2} \\right)\n    \\left( \\frac{r+p}{2} \\right) \\ge pqr\n  \\]\n  which is indeed true using AM-GM. Equality holds if $a=b=c=1$.\n\\end{soln}"
+  ]
+}

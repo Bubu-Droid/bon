@@ -1,0 +1,17 @@
+{
+  "desc": "show that sum of 8 numbers exactly one from each row and column is always 260",
+  "puid": "ZE4AF5",
+  "source": [
+    {
+      "AoPS": "https://artofproblemsolving.com/community/c4h3740732p36798206"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-27",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Consider the squares of an $8\\times 8$ chessboard filled with\n  the numbers $1$ to $64$ as in the figure below. If we choose\n  $8$ squares with the property that there is exactly one from\n  each row and exactly one from each column and add up the\n  numbers in the chosen squares, show that the sum obtained\n  is always $260$.\n  \\begin{figure}[htbp]\n    \\centering\n    \\begin{asy}\n      size(8cm);\n      int n=8;\n      real s=1.0;\n      for(int i=0;i<n;++i){\n      for(int j=0;j<n;++j){\n      int num=i*n+j+1;\n      if((i+j)%2==0)fill(shift(j*s,(n-1-i)*s)*scale(s)*unitsquare,lightgray);\n      else fill(shift(j*s,(n-1-i)*s)*scale(s)*unitsquare,white);\n      draw(shift(j*s,(n-1-i)*s)*scale(s)*unitsquare);\n      label(string(num),(j*s+s/2,(n-1-i)*s+s/2));\n      }\n      }\n      draw(box((0,0),(n*s,n*s)),black+2);\n    \\end{asy}\n  \\end{figure}\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Number the rows and columns from $1$ to $8$ from left to right\n  top to bottom respectively.\n\n  Let $a_{i,j}$ denote the cell of ith row and jth\n  column.\n\n  Note that $a_{i,j}=8(i-1)+j$. Now,\n  \\[\n  a_{i,j}+a_{m,n}=a_{m,j}+a_{i,n}=a_{i,n}+a_{j,m}\n  .\\]\n  \n  So we can swap the indices of the rows and columns when the\n  two $a_{i,j}$ are in sum.\n\n  Let $\\left\\{ a_{i_{1},j_1},a_{i_2,j_2},\\ldots,\n  a_{i_8,j_8} \\right\\}$ \n  be the chosen cells.\n\n  Therefore, $\\left\\{ i_1,i_2,\\ldots,i_8 \\right\\}$ and\n  $\\left\\{ j_1,j_2,\\ldots,j_8 \\right\\}$ are a\n  permutation of $\\left\\{ 1,2,\\ldots,8 \\right\\}$ since one cell\n  is chosen from each row and column.\n\n  We can permute the $\\left\\{ i_1,i_2,\\ldots,i_8 \\right\\}$ in\n  a pairwise manner such that they change to $1$, $2$,\n  $\\ldots$, 8 in order and the sum of $\\sum_{k=1}^n a_{i_k,j_k}$\n  remains the same. Similarly we can permute the indices of the\n  columns too.\n\n  Therefore,\n  \\[\n      \\sum_{n=1}^{8} a_{i_n,j_n}=\\sum_{n=1}^{8} a_{n,n}\n    = \\sum_{n=1}^{8} 8(k-1)+k\n    = 260\n  .\\qedhere\\]\n\\end{soln}"
+  ]
+}
+

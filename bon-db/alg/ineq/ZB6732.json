@@ -1,0 +1,18 @@
+{
+  "desc": "a+b+c>=1/a+1/b+1/c prove a+b+c>=3/{a+b+c}+2/{abc}",
+  "puid": "ZB6732",
+  "source": [
+    {
+      "Peru TST 2007 D1 P2": "https://aops.com/community/c6h148342p838560"
+    }
+  ],
+  "tags": [
+    "sos"
+  ],
+  "date": "2025-12-26",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $a,b,c$ be positive real numbers, such that:\n  \\[\n    a+b+c \\geq \\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c}\n  .\\]\n  Prove that:\n  \\[\n    a+b+c \\geq \\frac{3}{a+b+c}+\\frac{2}{abc}\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Note that\n  \\[\n  \\frac{a+b+c}{3}\n  \\ge \\frac{3}{\\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c}}\n  \\ge \\frac{3}{a+b+c}\n  .\\]\n\n  Therefore,\n  \\[\n    \\left( \\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c} \\right)^2\\ge\n    3\\left(\\frac{1}{ab}+\\frac{1}{bc}+\\frac{1}{ca}\\right)\\ge\n    \\frac{3(a+b+c)}{abc}\\ge \\frac{3\\left( \\frac{1}{a}+\n    \\frac{1}{b}+\\frac{1}{c}\\right) }{abc}\n  .\\]\n  \n  This gives that\n  \\[\n    \\frac{2(\n    a+b+c\n    )}{3}\n    \\ge\\frac{2\\left(\n    \\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c}\n    \\right)}{3}\n    \\ge \\frac{2}{abc}\n  .\\]\n\n  Adding $\\frac{a+b+c}{3}\\ge \\frac{3}{a+b+c}$ and\n  $\\frac{2(a+b+c)}{3} \\ge \\frac{2}{abc}$, we get,\n  \\[\n  a+b+c \\ge \\frac{3}{a+b+c}+\\frac{2}{abc}\n  .\\qedhere\\]\n\\end{soln}"
+  ]
+}

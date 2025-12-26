@@ -1,0 +1,20 @@
+{
+  "desc": "find length of DC in terms of AB (l_1) and BD (l_2)",
+  "puid": "ZF5DD4",
+  "source": [
+    {
+      "ISI B.Stat. 2006 P4": "https://aops.com/community/c6h483675p2710138"
+    }
+  ],
+  "tags": [
+    "tricky",
+    "constructgeo"
+  ],
+  "date": "2025-12-26",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}{}{}\n  In the figure below, $E$ is the midpoint of the arc $ABEC$\n  and the segment $ED$ is perpendicular to the chord $BC$ at\n  $D$. If the length of the chord $AB$ is $l_1$, and that of\n  the segment $BD$ is $l_2$, determine the length of\n  $DC$ in terms of $l_1,$ $l_2$.\n  \\begin{figure}[htpb]\n    \\centering\n    \\begin{asy}\n      unitsize(1 cm);\n      pair A = 2*dir(240), B = 2*dir(190), C = 2*dir(30), E = 2*dir(135);\n      pair D = foot(E, B, C);\n\n      draw(circle((0,0),2));\n      draw(A--B--C);\n      draw(E--D);\n\n      real size = 0.2;\n      pair d1 = D + size * (E - D) / length(E - D);\n      pair d2 = D + size * (C - D) / length(C - D);\n      pair corner = d1 + (d2 - D);\n\n      draw(D -- d1);\n      draw(D -- d2);\n      draw(d1 -- corner -- d2);\n\n      label(\"$A$\", A, 0.5A);\n      label(\"$B$\", B, 0.5B);\n      label(\"$C$\", C, 0.5C);\n      label(\"$E$\", E, 0.5E);\n      label(\"$D$\", D, dir(-60));\n    \\end{asy}\n  \\end{figure}\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{r1234}{2}{https://aops.com/community/c6h483675p2710189}\n\n\\begin{soln}\n  Suppose $D'$ is a point on the ray $AB$, such that\n  $BD=BD'$.Note that $BE$ is the external angle bisector of\n  $\\angle ABC$.So $BE\\perp DD'$.So $\\angle BD'E=90, ED'=ED$.\n  Now $AE=EC$.So $\\triangle AD'E$ and $\\triangle EDC$ are\n  congruent. So $CD=AD'=l_1+l_2$.\n\\end{soln}"
+  ]
+}
+

@@ -1,0 +1,19 @@
+{
+  "desc": "prove that n^4+4^n is composite for all n>=2",
+  "puid": "Z87387",
+  "source": [
+    {
+      "ISI B.Stat. 2006 P3": "https://aops.com/community/c6h56235p347824"
+    }
+  ],
+  "tags": [
+    "sophie-germain"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Prove that $n^4 + 4^{n}$ is composite for all values of\n  $n$ greater than $1$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n    We divide the solution into two cases based on the parity\n    of $n$.\n\n  \\begin{itemize}\n    \\item \\textbf{If $n$ is even:} Then $4\\mid n^{4}$ and\n      $4\\mid 4^{n}$ which implies $4\\mid n^{4}+4^{n}$ which\n      makes it composite.\n    \\item \\textbf{If $n$ is odd:} Then let $n=2k+1$ where\n      $k\\ge 1$ as $n\\ge 3$.\n\n      Then $n^{4}+4^{n}=n^{4}+4\\cdot 2^{4k}$. Let $2^{k}=m$.\n      \\[\n        n^{4}+4^{n}=n^{4}+4\\cdot m^{4}=(n^{2}+2m^2-2nm)\n        (n^2+2m^2+2nm)\n      .\\]\n      \n      To finish, note that,\n      \\[\n        n^2+2m^2+2mn>n^2+2m^2-2mn=(n-m)^2+m^2\\ge 4\n      .\\]\n      Thus both the two numbers are $\\ge 4$ which means that\n      their product is composite.\n  \\end{itemize}\n\\end{soln}"
+  ]
+}
+

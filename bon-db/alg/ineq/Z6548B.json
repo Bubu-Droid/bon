@@ -1,0 +1,19 @@
+{
+  "desc": "u_{n+1}=u_n+1/u_n prove that u_n<=3/2 sqrt{n}",
+  "puid": "Z6548B",
+  "source": [
+    {
+      "ISI 2023 P6": "https://aops.com/community/c6h3071909p27731828"
+    }
+  ],
+  "tags": [
+    "induction"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $\\{u_n\\}_{n \\ge 1}$ be a sequence of real numbers\n  defined as $u_1 = 1$ and\n  \\[\n    u_{n+1} = u_n + \\frac{1}{u_n} \\text{ for all $n \\ge 1$}\n  .\\]\n  Prove that $u_n \\le \\frac{3\\sqrt{n}}{2}$ for all $n$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Note that $u_1\\le \\frac{3}{2}\\sqrt{1}$.\n\n  Also $u_2=u_1+\\frac{1}{u_1}>0$. Similarly, if $u_i>0$, then\n  $u_{i+1}=u_i +\\frac{1}{u_i}>0$. So $u_1>0\\implies u_2>0\n  \\implies \\cdots$ and so on. This gives us that $u_i>0$ for\n  all $i\\ge 1$.\n\n  Now note that for all $n\\ge 2$, by AM-GM we get that,\n  \\[\n  u_n = u_{n-1}+\\frac{1}{u_{n-1}}\\ge 2\n  .\\]\n\n  \\begin{claim*}\n    $u_n \\le \\frac{3}{2}\\sqrt{n}$ for all $n\\ge 2$.\n  \\end{claim*}\n  \\begin{subproof}\n    We proceed by using induction on $n$.\n    \\begin{itemize}\n      \\item \\textbf{Base Case:} For $n=2$,\n        $u_2 = 2 \\le \\frac{3}{2}\\sqrt{2}$.\n      \\item \\textbf{Induction Hypothesis:} Assume that our claim\n        is true for some $n=k\\ge 2$.\n      \\item \\textbf{Inductive Step:} We prove the claim for\n        $n=k+1$.\n        \\begin{align*}\n          u_{k+1}^2\n          &= u_k^2+\\frac{1}{u_k^2}+2\\\\\n          &\\le \\frac{9k}{4}+\\frac{1}{2}+2\\\\\n          &= \\frac{9(k+1)}{4}\n        .\\end{align*}\n\n        This gives us that $a_{k+1}\\le \\frac{3}{2}\\sqrt{k+1}$\n        and thus our induction is complete.\\qedhere\n    \\end{itemize}\n  \\end{subproof}\n\n  Hence with the proof of our claim and the case $n=1$, the\n  problem is solved.\n\\end{soln}"
+  ]
+}
+

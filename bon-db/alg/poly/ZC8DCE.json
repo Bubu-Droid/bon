@@ -1,0 +1,19 @@
+{
+  "desc": "a+b+c=6 and ab+bc+ca=9 prove that 0<a<1<b<3<c<4",
+  "puid": "ZC8DCE",
+  "source": [
+    {
+      "ISI 2021 P7": "https://aops.com/community/c6h2623388p22672265"
+    }
+  ],
+  "tags": [
+    "ivt"
+  ],
+  "date": "2025-12-26",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  Let $a, b, c$ be three real numbers which are roots of a\n  cubic polynomial, and satisfy $a+b+c=6$ and $ab+bc+ca=9$.\n  Suppose $a<b<c$. Show that\n  \\[\n    0<a<1<b<3<c<4\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{polarLines}{7}{https://aops.com/community/c6h2623388p22679817}\n\n\\begin{soln}\n  Note that\n  \\[\n    P(x) = (x-a)(x-b)(x-c)\n    = x^3 - \\left(\\sum a\\right)x^2\n    + \\left(\\sum ab\\right)x - abc\n    = x^3-6x^2+9x-abc\n  .\\]\n\n  Now $P'(x) = 3x^2 - 12x+9 = 3 (x-3)(x-1)$.\n  Since the extrema occur at $x=1,3$ and we know that\n  $P$ has three distinct real roots, it is clear that\n  $a<1<b<3<c$. Also, this tells us that $P(1)>0$, $P(3)<0$.\n\n  $P(3)<0\\implies -abc = 3^3-6\\times 3^2 +\n  9\\times 3 -abc < 0  \\stackrel{b,c>0}{\\implies} a>0$.\n\n  We can observe that $P(4)=4-abc = P(1) >0$ as noted earlier.\n  This gives $c<4$ by IVP.\n\\end{soln}"
+  ]
+}
+

@@ -1,0 +1,17 @@
+{
+  "desc": "prove there exist a_i and a_j such that n|(a_i+i)-(a_j+j)",
+  "puid": "ZF0572",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c4h3740709p36797671"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  The sequence $(a_1,a_2,\\ldots,a_n)$ is a permutation of\n  $(1,2,\\ldots,n)$ where $n$ is an even natural number.\n\n  \\begin{enumerate}[(i)]\n    \\item Prove that there exist $a_i$, $a_j$ in the sequence\n      such that $n\\mid (a_i+i) - (a_j+j)$.\n    \\item   Will the result still be true if $n$ is odd?\n  \\end{enumerate}\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  We first solve part (i) and then part (ii).\n  \\begin{enumerate}[(i)]\n    \\item   FTSOC assume that there does not exist any $a_i$ and $a_j$ \n  such that $a_i+i \\equiv a_j+j\\pmod{n}$.\n\n  Therefore $\\left\\{ a_i+i \\right\\}_{i=1}^{n}$ is the CRS modulo\n  $n$. Therefore, summing the elements of the two sets,\n  of the CRS and the set $\\left\\{ a_i+i \\right\\}_{i=1}^{n}$,\n  we get that $\\sum_{i=1}^{n} a_i\\equiv 0\\pmod{n}$. This implies\n  that $n\\mid \\frac{n}{2}\\cdot (n+1)$ which gives a\n  contradiction as $n$ is even.\n  \\item No, the result is not true for odd $n$. Consider the\n    sequence $\\left\\{ a_i \\right\\}_{i=1}^{n}$ where $a_i=i$.\n\n      Then if $a_i+i\\equiv a_j+j\\pmod{n}$ for distinct $i$ and\n      $j$, then $n\\mid 2(i-j)$ which implies $n\\mid i-j$ as\n      $\\gcd(n,2)=1$. Moreover, note that as $i\\neq j$,\n      $n\\le |i-j|\\le n-1$ which gives a contradiction.\n\n      Thus all $(a_i+i)$ are distinct modulo $n$.\n  \\end{enumerate}\n\\end{soln}"
+  ]
+}
+

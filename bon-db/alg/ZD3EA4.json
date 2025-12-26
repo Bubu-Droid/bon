@@ -1,0 +1,23 @@
+{
+  "desc": "x_1+x_2=2x_{sigma(1)},... prove x_1=x_2=...=x_{2025}",
+  "puid": "ZD3EA4",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c6h3544964p34496655"
+    }
+  ],
+  "tags": [
+    "tricky",
+    "factorization",
+    "arrows",
+    "graph"
+  ],
+  "date": "2025-12-27",
+  "hardness": "medium",
+  "problem": "\\begin{problem*}{}{}\n  The real numbers $x_1,x_2,\\ldots,x_{2025}$ satisfy,\n  \\[\n    x_1+x_2=2x_{\\sigma(1)}, x_2+x_3=2{x_{\\sigma(2)}},\n    \\ldots, x_{2025}+x_1=2{x_{\\sigma(2025)}}\n  .\\]\n  Where $(\\sigma(1), \\sigma(2),\\ldots,\\sigma(2025))$ is a\n  permutation of $(1,2,\\ldots,2025)$.\n  Prove that $x_1=x_2=\\cdots=x_{2025}$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Square all the identities and sum them up. This gives\n  \\[\n    \\sum_{i=1}^{2025} (x_{i}+x_{i+1})^2\n    =4\\sum_{i=1}^{2025} x_{\\sigma(i)}^2\n  \\]\n  which on expanding, simplifying, and re-factorizing\n  gives\n  \\[\n    \\sum_{i=1}^{2025} (x_{i}-x_{i+1})^2=0\n  .\\]\n  Thus all $x_{i}$'s are equal and we are done.\n\\end{soln}",
+    "\\begin{soln}\n  We use arrows to solve this problem. Draw a graph with the\n  $x_i$ as the vertices and draw a directed edge\n  from $x_i\\to x_{\\sigma(i)}$. It is well known that this\n  graph can be decomposed into disjoint cycles (including\n  $1$-cycles).\n\n  \\begin{claim*}\n    Let $M=\\max\\left\\{ x_1,x_2,\\ldots,x_{2025} \\right\\}$. Then\n    all the elements in a cycle containing $M$ must be equal\n    to $M$.\n  \\end{claim*}\n  \\begin{subproof}\n    FTSOC assume not. This means that there is another element\n    $x_{i}$ in the same cycle as that of $M$ such that\n    $x_{i}<M$.\n\n    Firstly note that $2x_{\\sigma(i)}=x_{i}+x_{i+1}\n    <M+x_{i+1}\\le 2M\\implies x_{\\sigma(i)}<M$. Similarly,\n    $x_{\\sigma(i)}<M\\implies x_{\\sigma(\\sigma(i))}<M$.\n    We can continue this pattern till we get back to the\n    element with value $M$ which implies $M<M$\n    giving our desired contradiction.\n  \\end{subproof}\n  \n  Now pick a cycle containing $M$. Therefore all the elements\n  in this cycle are equal to $M$.\n\n  Let the elements of this cycle be denoted as\n  $\\left\\{ x_{i_1},x_{i_2},\\ldots,x_{i_k} \\right\\}$. Here\n  $\\sigma(i_1)=i_2$, $\\sigma(i_2)=i_3$ and so on up to\n  $\\sigma(i_k)=i_1$.\n\n  Now, $x_{i_1-1}+x_{i_1}=2x_{i_2}\\implies x_{i_1-1}=M$.\n  Similarly, we can also derive that\n  $x_{i_2-1}=x_{i_3-1}=\\cdots=x_{i_k-1}=M$.\n\n  Note that from the indices $\\left\\{ i_1,i_2,\\ldots,i_k\n  \\right\\}$, we just traversed to $\\left\\{ i_1-1,\n  i_2-1,\\ldots,i_k-1\\right\\}$. We can continue doing so\n  till we cover all the indices modulo $2025$.\n\n  This shows that all the elements $x_i=M$ and we are done.\n\\end{soln}"
+  ]
+}
+

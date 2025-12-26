@@ -1,0 +1,17 @@
+{
+  "desc": "a^2+b sqrt{2} is rational prove a sqrt{2} is rational",
+  "puid": "Z1480F",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c6h3740693p36797315"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  $M$ is a finite subset of $\\mathbb{R}$ with $\\lvert M \\rvert\n  \\ge 3$ which has the property\n  that for all $a$, $b\\in M$, $a^2+b\\sqrt{2}\\in \\mathbb{Q}$.\n  Then prove that $a\\sqrt{2}\\in \\mathbb{Q}$ for all $a\\in M$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Pick distinct $a$, $b$, $c\\in M$.\n\n  Then we note that $a^2+b\\sqrt{2}\\in \\mathbb{Q}$ and\n  $a^2+c\\sqrt{2}\\in \\mathbb{Q}$. Subtracting implies\n  $(b-c)\\sqrt{2}\\in \\mathbb{Q}$. This also implies that\n  $(b-c)\\in \\mathbb{Q}\\sqrt{2}$.\n\n  Now, $b^2+b\\sqrt{2}\\in \\mathbb{Q}$ and $c^2+c\\sqrt{2}\\in\n  \\mathbb{Q}$. Subtracting implies $(b^2-c^2)+(b-c)\\sqrt{2}\\in\n  \\mathbb{Q}$ which further implies $(b^2-c^2)\\in \\mathbb{Q}$.\n  Now note that as $(b-c)\\in \\mathbb{Q}\\sqrt{2}$, we also get\n  that $(b+c)\\in \\mathbb{Q}\\sqrt{2}$.\n\n  Adding $(b+c)$ and $(b-c)$, we get that $b\\in \\mathbb{Q}\n  \\sqrt{2}$ which implies that $b\\sqrt{2}\\in \\mathbb{Q}$.\n\n  Similarly $c\\sqrt{2}\\in \\mathbb{Q}$. Since $b$ was arbitrarily\n  fixed from $M$, we can conclude that for all $a\\in M$,\n  $a\\sqrt{2}\\in \\mathbb{Q}$.\n\\end{soln}"
+  ]
+}
+

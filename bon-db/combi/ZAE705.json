@@ -1,0 +1,17 @@
+{
+  "desc": "px2q rectangular pool table, ball rolled at 45 degree eventually lands in corner pocket",
+  "puid": "ZAE705",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c4h3740745p36798456"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-27",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  A rectangular $p\\times 2q$ pool table has pockets in every\n  corner and in the middle of each $2q$-long side. A ball is\n  rolled from a corner pocket at a $45^{\\circ}$ angle with\n  respect to the side rails. Find necessary and sufficient\n  conditions on the real numbers $p$ and $q$ for the ball to\n  eventually get into a pocket (angle of incidence is equal\n  to the angle of reflection).\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  We lay the board on the cartesian plane as shown in the\n  diagram.\n\n  \\begin{figure}[htbp]\n    \\centering\n    \\begin{asy}\n      size(8cm);\n\n      pair A=(0,0), B=(8,0), C=(8,6);\n      pair D=(0,6), E=(6,6), F=(8,4);\n      pair G=(6,2), M=(4,6), N=(4,0);\n\n      draw(A--B--C--D--A);\n      draw(A--E--F--G, blue, Arrow);\n      draw(arc(A,1,0,45)--A--cycle);\n\n      label(\"$45^{\\circ}$\", A, 8dir(22.5), red);\n      dot(\"$(0,0)$\",A,SW);\n      dot(\"$(2q,0)$\",B,SE);\n      dot(\"$(2q,p)$\",C,NE);\n      dot(\"$(0,p)$\",D,NW);\n      dot(\"$(q,p)$\",M,dir(90));\n      dot(\"$(q,0)$\",N,S);\n    \\end{asy}\n  \\end{figure}\n\n  We extend the grid over the entire plane by drawing lines\n  $y=2nq$ and $x=np$ for all $n\\in \\mathbb{N}_0$. The holes will\n  be present at $(x,y)=(mq,np)$ for $m$, $n\\in\\mathbb{N}_0$.\n\n  When the ball rebounds after hitting an edge, instead of\n  returning back, we let it pass thought the edges.\n\n  If the ball goes into a hole after hitting the edges\n  multiple times, then the ray $y=x$ with slops of $45^{\\circ}$\n  with the $X$-axis from origin must pass through a hole\n  and vice-versa.\n\n  Let's say that the ball enters the hole $(mq,np)$. Here note\n  that both $m$ and $n$ are non-zero as the hole in which the\n  ball enters obviously does not lie on the axis.\n\n  Then the hole must lie on the line $y=x$ which implies\n  $mq=np\\implies \\frac{p}{q}=\\frac{m}{n}\\implies\n  \\frac{p}{q}\\in \\mathbb{Q}$.\n\n  Therefore, for the ball to enter a hole, $\\frac{p}{q}$ must\n  be rational. Also the ball enters a hole if $\\frac{p}{q}$ is\n  rational because the grid condition is equivalent to the\n  ball reflecting after hitting the side as we have already\n  proved.\n\\end{soln}"
+  ]
+}
+
