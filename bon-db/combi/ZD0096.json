@@ -1,0 +1,20 @@
+{
+  "desc": "three cities n citizens each, each person has n+1 friends in other cities prove there exists friendship triangle",
+  "puid": "ZD0096",
+  "source": [
+    {
+      "ISI 2021 P1": "https://aops.com/community/c6h2623380p22672224"
+    }
+  ],
+  "tags": [
+    "graph",
+    "extremal"
+  ],
+  "date": "2025-12-27",
+  "hardness": "hard",
+  "problem": "\\begin{problem*}{}{}\n  There are three cities each of which has exactly the same\n  number of citizens, say $n$. Every citizen in each city\n  has exactly a total of $(n+1)$ friends in the other two\n  cities. Show that there exist three people, one from\n  each city, such that they are friends. We assume that\n  friendship is mutual (that is, a symmetric relation).\n\\end{problem*}",
+  "solution": [
+    "\\aopssoln{Sammy27}{16}{https://aops.com/community/c6h2623380p31171250}\n\n\\begin{soln}\n  Equivalently, we prove that a simple $(n+1)$-regular\n  tripartite graph with $n$ vertices in each partition set\n  $A$, $B$ and $C$ must contain a triangle. \n\n  Assume not. For $a\\in A$, define $B\\deg(a)$ as the\n  degree of $a$ after deleting $C$ and $C\\deg(a)$\n  as the degree of $a$ after deleting $B$.\n\n  Clearly, $B\\deg(a)+C\\deg(a)=n+1$. Similar definitions\n  follow symmetrically. Let\n\n  \\begin{align*}\n  &S_a=\\{(a,B\\deg(a)):a\\in A\\}\\cup\\{(a,C\\deg(a)):a\\in A\\},\\\\\n  &S_b=\\{(b,C\\deg(b)):b\\in B\\}\\cup\\{(b,A\\deg(b)):b\\in B\\},\\\\\n  &S_c=\\{(c,A\\deg(c)):c\\in C\\}\\cup\\{(c,B\\deg(c)):c\\in C\\}.\n  \\end{align*}\n\n  Choose $(x, y)\\in S_a\\cup S_b\\cup S_c$ such\n  that $y$ is maximized.\n\n  WLOG, say $x\\in A$ and $y=B\\deg(x)$. Because\n  $B\\deg(x)\\leq n$, we must have $C\\deg(x)\\geq 1$, which\n  implies that there exists $z\\in C$ such that there is\n  an edge between $x$ and $z$.\n\n  Note that $B\\deg(z)\\leq n-B\\deg(x)$ is forced,\n  otherwise, by PHP, we would have a triangle. However,\n  this suggests that\n  $A\\deg(z)\\geq n+1-(n-B\\deg(x))=B\\deg(x)+1$.\n  This contradicts the choice of $y$ as\n  $(z, A\\deg(z))\\in S_a\\cup S_b \\cup S_c$ with\n  $A\\deg(z)>B\\deg(x)$.\n  \n  Hence, the graph must contain a triangle, and we are done.\n\\end{soln}"
+  ]
+}
+
