@@ -1,0 +1,16 @@
+{
+  "desc": "a_m(0)=d/2^m and a_m(j+1)=a_m(j)^2+2a_m(j)",
+  "puid": "Z65914",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3353091p31114624"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Define a sequence of real numbers\n  $\\left\\{ a_m(j) \\right\\}_{m\\ge 1,j\\ge 0}$\n  with $a_m(0)=\\frac{d}{2^m}$ where $d>0$ and,\n  \\[\n    a_m(j+1) = a_m(j)^2 + 2 a_m(j)\n  .\\]\nFind the limit $\\lim_{n \\to \\infty} a_n(n)$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Define $b_m(j)=a_m(j)+1$.\n\n  Then note that $b_{m}(j+1)=b_m(j)^2$. Hence $b_m(0)=1+\n  \\frac{d}{2^m}$. It is easy to derive that $b_m(j)=\\left(\n  1+\\frac{d}{2^m}\\right)^{2^j}$ for all $j\\ge 0$.\n\n  Therefore $b_m(m)=\\left(1+\\frac{d}{2^m}\\right)^{2^m}$. So,\n  \\[\n    \\lim_{m \\to \\infty}a_m(m)=\n    \\lim_{m \\to \\infty} b_m(m)-1=\\lim_{m \\to \\infty}\n    \\left( 1+\\frac{d}{2^m} \\right)^{\\frac{2^m}{d}\\cdot d}-1\n    =e^{d}-1.\n    \\qedhere\n  \\]\n\\end{soln}"
+  ]
+}

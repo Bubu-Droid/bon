@@ -1,0 +1,20 @@
+{
+  "desc": "f(0)=1 and f(1)^3+2f(1)=5 prove f'(c)=2/{2+3f(c)^2}",
+  "puid": "Z93F66",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3740670p36796936"
+    }
+  ],
+  "tags": [
+    "mvt",
+    "mvtconstruct"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  The function $f\\colon [0,1]\\to \\mathbb{R}$ is continuous\n  over $[0,1]$ and differentiable over $(0,1)$. It is given\n  that $f(0)=1$ and $f(1)^{3}+2f(1)=5$. Then prove that there\n  exists $c\\in (0,1)$ such that,\n  \\[\n    f'(c)=\\frac{2}{2+3f(c)^2}\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Consider the function $g(x)=f(x)^{3}+2f(x)-2x-3$.\n\n   It is easy to check that $g(x)$ is continuous over\n   $[0,1]$ and differentiable over $(0,1)$.\n\n  Also, $g(0)=g(1)=0$. Therefore by Rolle's Theorem, there\n  exists a $c\\in (0,1)$ such that $g'(c)=0$.\n\n  Note that $g'(x) = 3f(x)^2\\cdot f'(x) + 2f'(x)-2$.\n\n  From here, $g'(c)=0$ implies that,\n  \\[\n    f'(c)=\\frac{2}{2+3f(c)^2}\n  .\\qedhere\\]\n\\end{soln}"
+  ]
+}
+

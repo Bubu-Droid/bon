@@ -1,0 +1,17 @@
+{
+  "desc": "a_1^{1/n}+...+a_m^{1/n}=b_1^{1/n}+...+b_k^{1/n} prove m=k and a_1...a_m=b_1...b_k",
+  "puid": "Z3402A",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3740623p36796341"
+    }
+  ],
+  "tags": [],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Two sequences $\\left\\{ a_i \\right\\}_{i=1}^{m}\\subset\n  \\mathbb{R}^{+}$ and $\\left\\{ b_i \\right\\}_{i=1}^{k}\\subset\n  \\mathbb{R}^{+}$ are given satisfying,\n  \\[\n  a_1^{{1}/{n}}+\\cdots+a_m^{{1}/{n}}\n  = b_1^{{1}/{n}}\n  +\\cdots+b_k^{{1}/{n}}\\quad\\forall \\, n\\in \\mathbb{N}\n  .\\]\n\n  Then prove that\n  \\begin{enumerate}[(i)]\n    \\item $m=k$\n    \\item $a_1a_2 \\cdots a_m\n      =b_1 b_2 \\cdots b_k$.\n  \\end{enumerate}\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  We first solve Part (i) and then Part (ii).\n  \\begin{enumerate}[(i)]\n    \\item Taking $n\\to \\infty$, we get,\n      \\[\n        m = \\lim_{n \\to \\infty} (a_1^{{1}/{n}}\n        +\\cdots+a_m^{{1}/{n}})=\\lim_{n \\to \\infty}\n        (b_1^{{1}/{n}}+\\cdots+b_k^{{1}/{n}}) = k.\n      \\]\n    \\item Note that from $m=k$, we can say that,\n      \\[\n      \\frac{a_1^{{1}/{n}}-1}{n}+\\cdots+\n      \\frac{a_m^{{1}/{n}}-1}{n}=\n      \\frac{b_1^{{1}/{n}}-1}{n}+\\cdots+\n      \\frac{b_k^{{1}/{n}}-1}{n}\n      .\\]\n      \n    Now taking $n\\to \\infty$, we get,\n    \\begin{align*}\n      & \\lim_{n \\to \\infty} \\left( \n      \\sum_{i=1}^{m} \\left( \\frac{a_i^{{1}/{n}}-1}{n}\n      \\right) \\right) =\n      \\lim_{n \\to \\infty} \\left( \n      \\sum_{i=1}^{k} \\left( \\frac{b_i^{{1}/{n}}-1}{n}\n      \\right) \\right)\\\\\n      &\\implies \\sum_{i=1}^{m} \\lim_{n \\to \\infty}\n      \\left( \\frac{a_i^{{1}/{n}}-1}{n} \\right)=\n      \\sum_{i=1}^{k} \\lim_{n \\to \\infty}\\left( \n      \\frac{b_i^{{1}/{n}}-1}{n}\\right)\\\\\n      &\\implies \\sum_{i=1}^{m} \\ln(a_i)=\n      \\sum_{i=1}^{k} \\ln(b_i)\\\\\n      &\\implies a_1 a_2 \\cdots a_m\n      = b_1 b_2 \\cdots b_k.\\qedhere\n    \\end{align*}\n  \\end{enumerate}\n\\end{soln}"
+  ]
+}
+

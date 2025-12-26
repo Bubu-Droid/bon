@@ -1,0 +1,20 @@
+{
+  "desc": "lim_{n->infty} a_{n+1}/a_n=1/2 find lim_{n->infty} (e^{a_n^2}+a_n)/4",
+  "puid": "ZE8A6E",
+  "source": [
+    {
+      "AoPS": "https://aops.com/community/c7h3163792p28783644"
+    }
+  ],
+  "tags": [
+    "sandwich",
+    "ratio-test"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Let $\\{a_n\\}_{n\\ge 1}$ be a sequence of positive real numbers\n  such that $\\lim_{n\\to\\infty}\\frac{a_{n+1}}{a_n}=\\frac{1}{2}$.\n  Then find\n  \\[\n    \\lim_{n\\to\\infty}\\frac{e^{{a_n}^2}+a_n}{4}\n  .\\]\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  As $\\lim_{n \\to \\infty} \\frac{a_{n+1}}{a_n}=\\frac{1}{2}$, so\n  for all $\\eps > 0$ there exists $N\\in \\NN$\n  such that for all $n\\ge N$,\n  \\[\n  \\left\\lvert \\frac{a_{n+1}}{a_n}-\\frac{1}{2}\n  \\right\\rvert <\\varepsilon\n  .\\]\n\n  This gives us the following inequality,\n  \\[\n    \\frac{1}{2}-\\varepsilon < \\frac{a_{N+i}}{a_{N+(i-1)}}\n    <\\frac{1}{2}+ \\varepsilon\n  \\]\n  for all $1\\le i\\le k$ where $k$ is some fixed natural number\n  $\\ge 1$. Now note that if we take $\\varepsilon<\\frac{1}{2}$,\n  then everything on both the sides of the inequality is\n  positive. So we can multiply them which gives,\n  \\[\n  \\left( \\frac{1}{2}-\\varepsilon\\right)^{k} <\\frac{a_{N+k}}{a_N}\n  <\\left( \\frac{1}{2}+\\varepsilon \\right)^{k}\n  .\\]\n\n  Limiting $k\\to \\infty$, by Sandwich theorem,\n  we get that $\\lim_{n \\to \\infty} a_{n} = 0$.\n\n  Therefore,\n  \\[\n  \\lim_{n \\to \\infty} \\frac{e^{a_{n}^2}+a_{n}}{4}\n  =\\frac{1}{4}\n  .\\qedhere\n\\]\n\\end{soln}"
+  ]
+}
+

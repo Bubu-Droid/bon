@@ -1,0 +1,19 @@
+{
+  "desc": "find all functions f(7x+1)=49f(x)",
+  "puid": "ZCD7C4",
+  "source": [
+    {
+      "IMC 2023 P1": "https://aops.com/community/c7h3125081p28295643"
+    }
+  ],
+  "tags": [
+    "contractive"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Find all functions $f: \\mathbb{R} \\to \\mathbb{R}$ that have\n  a continuous second derivative and for which\n  the equality $f(7x+1)=49f(x)$ holds\n  for all $x \\in \\mathbb{R}$.\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  Differentiating the equation twice, we get that\n  \\[\n    f''(7x+1)=f''(x)\n  .\\]\n\n  Fix $x_0\\in \\mathbb{R}$ arbitrarily.\n  Then define the sequence\n  $\\left\\{ x_i \\right\\}_{i\\ge 0}$ by\n  $x_{n+1}=\\frac{x_{n}-1}{7}$. Then note that\n  \\[\n  \\lvert x_{n+1}-x_{n} \\rvert =\\frac{1}{7}\n  \\lvert x_{n}-x_{n-1} \\rvert\n  .\\]\n  Therefore, by the condition of contractive sequence,\n  $\\left\\{ x_{n} \\right\\}_{n\\ge 0}$ converges. Checking gives\n  that it converges to $- \\frac{1}{6}$. (If you want to avoid\n  contractive sequence, then you can define the sequence\n  $y_n = x_{n}+\\frac{1}{6}$ and then work with it.)\n\n  Note that as $f''(7x+1)=f''(x)$, $f''(x_0)=f''(x_{n})$. Taking\n  limits on both sides, we get that\n  $f''(x_0)=f''(- \\frac{1}{6})$. Since $x_0$ was fixed\n  arbitrarily, $f''(x)=c$ for some constant $c\\in \\mathbb{R}$ \n  and all $x\\in \\mathbb{R}$.\n\n  Since $f''(x)$ is continuous,\n  integrating twice and checking gives that\n   $f(x) = 3tx^2+tx+\\frac{t}{12}$ is the only solution where\n   $t$ is a fixed real constant.\n\n   It is easy to check that this function indeed works and we\n   are done.\n\\end{soln}"
+  ]
+}
+

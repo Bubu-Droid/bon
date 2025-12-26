@@ -1,0 +1,18 @@
+{
+  "desc": "f(x)=x-xe^{-1/x} show f(x) is increasing on (0,infty) and lim_{x->infty} f(x)=1",
+  "puid": "Z8A2F8",
+  "source": [
+    {
+      "ISI B.Stat. 2006 P6": "https://aops.com/community/c7h482122p2700795"
+    }
+  ],
+  "tags": [
+    "funcanalysis"
+  ],
+  "date": "2025-12-26",
+  "hardness": "easy",
+  "problem": "\\begin{problem*}{}{}\n  Solve the following:\n  \\begin{enumerate}[(a)]\n    \\item Let $f(x)=x-xe^{-\\frac 1x}, \\ \\ x>0$. Show that\n      $f(x)$ is an increasing function on $(0,\\infty)$,\n      and $\\lim_{x\\to\\infty} f(x)=1$.\n\n    \\item Using part (a) or otherwise, draw graphs of\n      $y=x-1, y=x, y=x+1$, and $y=xe^{-\\frac{1}{|x|}}$\n      for $-\\infty<x<\\infty$ using the same $X$ and $Y$ axes.\n  \\end{enumerate}\n\\end{problem*}",
+  "solution": [
+    "\\begin{soln}\n  We first solve Part (a) and use it to draw the graph in\n  Part (b).\n  \\begin{enumerate}[(a)]\n    \\item We have $f(x) = x - xe^{- \\frac{1}{x}}$. So,\n      \\[\n        f'(x)=1-e^{- \\frac{1}{x}}\\left(\\frac{x+1}{x}\\right)\n      .\\]\n    Define $g(x) = e^x - x - 1$. Then $g'(x)=e^x-1$. Note that\n      $g'(x) = e^x -1\\ge 0$ for all $x\\ge 0$\n      (equality holds iff $x=0$). Now note that\n      there does not exist any $x_0>0$ such that $g(x_{0})=0$\n      (this would otherwise give a contradiction to the fact\n      that $g'(x)>0$ for all $x>0$ by Rolle's Theorem on\n      $[0,x_0]$). Thus $g(x)>0$ for all $x>0$. Substituting\n       $x\\to \\frac{1}{x}$, we get that $f'(x)>0$ for all\n       $x>0$.\n\n      Now $\\lim_{x\\to\\infty} f(x)= \\lim_{y \\to 0^+}\n      f\\left(\\frac{1}{y}\\right) = \\lim_{y \\to 0^+} \\frac{e^{y}-1}{ye^y}\n      =1$.\n      \n    \\item The graph is given below:\n      \\begin{figure}[H]\n        \\centering\n        \\begin{asy}\n          import graph;\n          size(250);\n\n          real f(real x) {return (x == 0) ? 0 : x * exp(-1/abs(x));}\n\n          draw(graph(new real(real x){return x-1;}, -1.5, 2.5), red+dashed);\n          draw(graph(new real(real x){return x;}, -2, 2), blue+dashed);\n          draw(graph(new real(real x){return x+1;}, -2.5, 1.5), deepgreen+dashed);\n\n          draw(graph(f, -2.5, -0.01), black+1.2);\n          draw(graph(f, 0.01, 2.5), black+1.2);\n\n          xaxis(\"$x$\", Arrow);\n          yaxis(\"$y$\", Arrow);\n          label(\"$y=xe^{-1/|x|}$\", (2, 1.5), N);\n          label(\"$y=x+1$\", (1, 2), NW, deepgreen);\n          label(\"$y=x-1$\", (1.5, f(1)), SE, red);\n        \\end{asy}\n      \\end{figure}\n  \\end{enumerate}\n\\end{soln}"
+  ]
+}
