@@ -12,9 +12,8 @@
   ],
   "date": "2025-12-23",
   "hardness": "hard",
-  "problem": "\\begin{problem*}{}{}\n  Let $a_1$, $a_2$, \\ldots, $a_n$ be positive reals and let\n  \\[\n    m=\\min\\left\\{a_1+\\frac1{a_2},\n    a_2+\\frac1{a_3},\\ldots,a_n+\\frac1{a_1}\\right\\}.\n  \\]\n  Show that\n  \\[\n    \\sqrt[n]{a_1a_2\\cdots a_n}\n    +\\frac1{\\sqrt[n]{a_1a_2\\cdots a_n}}\\ge m.\n  \\]\n\\end{problem*}",
+  "problem": "\\begin{problem*}{}{}\n  Let $a_1$, $a_2$, \\dots, $a_n$ be positive reals and let\n  \\[\n    m=\\min\\left\\{a_1+\\frac1{a_2},\n    a_2+\\frac1{a_3},\\dots,a_n+\\frac1{a_1}\\right\\}.\n  \\]\n  Show that\n  \\[\n    \\sqrt[n]{a_1a_2\\dotsm a_n}\n    +\\frac1{\\sqrt[n]{a_1a_2\\dotsm a_n}}\\ge m.\n  \\]\n\\end{problem*}",
   "solution": [
-    "\\begin{soln}\n  Let\n  \\[\n    G=\\sqrt[n]{a_1a_2\\cdots a_n},\n  \\]\n  and let $k$ be the index such that\n  \\[\n    a_k=\\min_{1\\le i\\le n}\\{a_i\\}.\n  \\]\n  So, $G\\ge a_k$. If $G\\le a_{k+1}$, then\n  \\[\n    G+\\frac1G\\ge a_k+\\frac1{a_{k+1}}\\ge m.\n  \\]\n\n  Otherwise $G>a_{k+1}$. Similarly, we can continue using this\n  pattern until we reach an index $j$ such that\n  \\[\n    G\\ge a_j\\quad\\text{and}\\quad G\\le a_{j+1}.\n  \\]\n  If no such index exists, then $G>a_i$ for all $1\\le i\\le n$,\n  which implies\n  \\[\n    nG>\\sum_{i=1}^n a_i\\ge nG,\n  \\]\n  where the last inequality follows by AM–GM.\n  This however is a clear contradiction and hence,\n  such an index $j$ must exist and we are done.\n\\end{soln}"
+    "\\begin{soln}\n  Let\n  \\[\n    G=\\sqrt[n]{a_1a_2\\dotsm a_n},\n  \\]\n  and let $k$ be the index such that\n  \\[\n    a_k=\\min_{1\\le i\\le n}\\{a_i\\}.\n  \\]\n  So, $G\\ge a_k$. If $G\\le a_{k+1}$, then\n  \\[\n    G+\\frac1G\\ge a_k+\\frac1{a_{k+1}}\\ge m.\n  \\]\n\n  Otherwise $G>a_{k+1}$. Similarly, we can continue using this\n  pattern until we reach an index $j$ such that\n  \\[\n    G\\ge a_j\\quad\\text{and}\\quad G\\le a_{j+1}.\n  \\]\n  If no such index exists, then $G>a_i$ for all $1\\le i\\le n$,\n  which implies\n  \\[\n    nG>\\sum_{i=1}^n a_i\\ge nG,\n  \\]\n  where the last inequality follows by AM–GM.\n  This however is a clear contradiction and hence,\n  such an index $j$ must exist and we are done.\n\\end{soln}"
   ]
 }
-
