@@ -85,65 +85,59 @@ def oper_demacro(text: str) -> str:
 
 
 def comm_demacro(text: str) -> str:
-    replacements: list[tuple[str, str]] = [
-        (r"\ii ", r"\item "),
-        (r"\ii[", r"\item["),
-        (r"\wh", r"\widehat"),
-        (r"\wt", r"\widetilde"),
-        (r"\ol", r"\overline"),
-        (r"\epsilon", r"\eps"),
-        (r"\eps", r"\varepsilon"),
-        (r"\dang ", r"\measuredangle "),
-        (r"\dg", r"^{\circ}"),
-        (r"\inv", r"^{-1}"),
-        (r"\half", r"\frac{1}{2}"),
-        (r"\GL", r"\operatorname{GL}"),
-        (r"\SL", r"\operatorname{SL}"),
-        (r"\ts", r"\textsuperscript"),
-        (r"\opname", r"\operatorname"),
-        (r"\defeq", r"\overset{\text{def}}{=}"),
-        (r"\id", r"\operatorname{id}"),
-        (r"\ord", r"\operatorname{ord}"),
-        (r"\sign", r"\operatorname{sign}"),
-        (r"\injto", r"\hookrightarrow"),
-        (r"\vdotswithin=", r"\vdots"),
+    text = text.replace(r"\vdotswithin=", r"\vdots")
+    expansions: list[tuple[str, str]] = [
+        (r"ii ", r"\item "),
+        (r"wh", r"\widehat"),
+        (r"wt", r"\widetilde"),
+        (r"ol", r"\overline"),
+        (r"epsilon", r"\eps"),
+        (r"eps", r"\varepsilon"),
+        (r"dang", r"\measuredangle"),
+        (r"dg", r"^{\circ}"),
+        (r"inv", r"^{-1}"),
+        (r"half", r"\frac{1}{2}"),
+        (r"GL", r"\operatorname{GL}"),
+        (r"SL", r"\operatorname{SL}"),
+        (r"ts", r"\textsuperscript"),
+        (r"opname", r"\operatorname"),
+        (r"defeq", r"\overset{\text{def}}{=}"),
+        (r"id", r"\operatorname{id}"),
+        (r"ord", r"\operatorname{ord}"),
+        (r"sign", r"\operatorname{sign}"),
+        (r"injto", r"\hookrightarrow"),
         # Bubu additions
-        (r"\csc", r"\operatorname{cosec}"),
-        (r"\arccsc", r"\operatorname{arccsc}"),
-        (r"\arcsec", r"\operatorname{arcsec}"),
-        (r"\arccot", r"\operatorname{arccot}"),
-        (r"\ul", r"\underline"),
-        (r"\tri", r"\triangle"),
-        (r"\para", r"\parallel"),
-        (r"\arc{", r"\widehat{"),
-        (r"\hrulebar", "\n-----\n"),
-        (r"\CC", r"\mathbb{C}"),
-        (r"\FF", r"\mathbb{F}"),
-        (r"\NN", r"\mathbb{N}"),
-        (r"\QQ", r"\mathbb{Q}"),
-        (r"\RR", r"\mathbb{R}"),
-        (r"\ZZ", r"\mathbb{Z}"),
-        (r"\OO", r"\mathcal{O}"),
-        (r"\ang", r"\angle"),
-        (r"\ray", r"\overrightarrow"),
-        (r"\trans", r"^{\mathsf{T}}"),
-        (r"\oo", r"\infty"),
-        (r"\dgnin", r"90^{\circ}"),
-        (r"\dgone", r"180^{\circ}"),
+        (r"csc", r"\operatorname{cosec}"),
+        (r"arccsc", r"\operatorname{arccsc}"),
+        (r"arcsec", r"\operatorname{arcsec}"),
+        (r"arccot", r"\operatorname{arccot}"),
+        (r"ul", r"\underline"),
+        (r"tri", r"\triangle"),
+        (r"para", r"\parallel"),
+        (r"arc", r"\widehat"),
+        (r"hrulebar", "\n-----\n"),
+        (r"CC", r"\mathbb{C}"),
+        (r"FF", r"\mathbb{F}"),
+        (r"NN", r"\mathbb{N}"),
+        (r"QQ", r"\mathbb{Q}"),
+        (r"RR", r"\mathbb{R}"),
+        (r"ZZ", r"\mathbb{Z}"),
+        (r"OO", r"\mathcal{O}"),
+        (r"ang", r"\angle"),
+        (r"ray", r"\overrightarrow"),
+        (r"trans", r"^{\mathsf{T}}"),
+        (r"oo", r"\infty"),
+        (r"dgnin", r"90^{\circ}"),
+        (r"dgone", r"180^{\circ}"),
     ]
-    s = text
-    for short, full in replacements:
-        s = s.replace(short, full)
-    return s
 
-
-def remove_soft_newlines(text: str) -> str:
-    strip_text = "\n".join(line.lstrip() for line in text.splitlines())
-    return re.sub(
-        r"[a-zA-Z.,;—\"–'):$]\n[a-zA-Z$'\"]",
-        lambda m: m.group(0).replace("\n", " "),
-        strip_text,
-    )
+    for command_name, expansion in expansions:
+        text = re.sub(
+            rf"\\{command_name}(?![a-zA-Z])",
+            expansion.replace("\\", "\\\\"),
+            text,
+        )
+    return text
 
 
 def toAOPS(text: str) -> str:
@@ -207,17 +201,15 @@ def toAOPS(text: str) -> str:
         r"\\item\[([^\]]*)\]", r"[*] [b]\1[/b]", text
     )  # for description items
 
-    return text
-    # # Join together newlines
-    # paragraphs = [
-    #     " ".join([line.strip() for line in paragraph.splitlines()]).strip()
-    #     for paragraph in text.split("\n\n")
-    # ]
-    # return "\n".join(paragraphs)
+    # Join together newlines
+    paragraphs = [
+        " ".join([line.strip() for line in paragraph.splitlines()]).strip()
+        for paragraph in text.split("\n\n")
+    ]
+    return "\n\n".join(paragraphs)
 
 
 if __name__ == "__main__":
     cliptext = pyperclip.paste()
-    cliptext = remove_soft_newlines(cliptext)
     cliptext = toAOPS(cliptext)
     pyperclip.copy(cliptext)
