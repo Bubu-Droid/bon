@@ -378,7 +378,7 @@ VON (vEnhance's Olympiad Navigator).
 
 It was only after naming the script bon that I found out the
 abbreviation fits well since my nickname starts with `B`. What
-a cute coincidence. :laughing:
+a cute coincidence! :laughing:
 
 [bubusty]: https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bubu.sty
 [bontex]: https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bon.tex
