@@ -152,6 +152,7 @@ def toAOPS(text: str) -> str:
     text = text.replace(r"\end{center}", "")
     text = text.replace(r"\par ", "\n")
     text = text.replace(r"\item ", "[*]")
+    text = text.replace(r"\ii ", "[*]")
     text = text.replace(r"\begin{enumerate}", "[list=1]")
     text = text.replace(r"\end{enumerate}", "[/list]")
     text = text.replace(r"\begin{itemize}", "[list]")
