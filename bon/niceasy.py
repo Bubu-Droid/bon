@@ -16,7 +16,7 @@ https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.p
 
 A few edits are made by Bubu.
 These edits retain the pen dps and convert
-the explicit directions vectors to degrees.
+the explicit directional vectors to degrees.
 https://github.com/Bubu-Droid/bon/blob/main/bon/niceasy.py
 */
 
@@ -35,9 +35,9 @@ try:
     input_buffer = io.StringIO(input_contents)  # replace with clipboard
     first_line = input_buffer.readline()
     output_buffer = io.StringIO()
-    assert (
-        "Geogebra to Asymptote conversion" in first_line
-    ), f"First line is missing header\n{first_line}"
+    assert "Geogebra to Asymptote conversion" in first_line, (
+        f"First line is missing header\n{first_line}"
+    )
     point_coords_dict = {}
     trash = ["real labelscalefactor", "pen dotstyle", "real xmin"]
     customparm = ["import graph", "pen dps"]
