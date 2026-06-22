@@ -11,8 +11,12 @@ import pyperclip
 ALLOWED_CHARS = string.ascii_letters + string.digits + "_"
 
 ADVERTISEMENT = r"""/*
+Asymptote cleaner for GeoGebra export
+
 Converted from GeoGebra by User:Azjps using Evan's magic cleaner
 https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
+A browser adaptation can be found here:
+https://web.evanchen.cc/applets/ggbclean.html
 
 A few edits are made by Bubu.
 These edits retain the pen dps and convert
